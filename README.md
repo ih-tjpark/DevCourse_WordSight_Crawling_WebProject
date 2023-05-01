@@ -1,1 +1,1 @@
-# DevCourse_WordSight_Crwaling_WebProject
+# DevCourse_WordSight_Crawling_WebProject
