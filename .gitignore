@@ -336,3 +336,7 @@ cython_debug/
 
 # Mac Ds_store
 .DS_Store
+
+# django 가상환경
+.pyvenv.cfg
+Scripts/
