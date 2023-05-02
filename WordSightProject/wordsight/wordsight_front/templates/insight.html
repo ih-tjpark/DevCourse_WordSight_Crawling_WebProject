@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+<!--키워드 분석페이지-->
+{% block content%}
+<section id="keyword-insight">
+    {% include "partial/search.html"%}
+    {{keyword}}
+    <div>
+        <div class="insight-main">
+
+        </div>
+        <div class="insight-wordcloud">
+
+        </div>
+    </div>
+</section>
+{% endblock%}
