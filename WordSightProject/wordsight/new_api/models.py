@@ -1,7 +1,6 @@
 import uuid
 from django.db import models
-from django.utils import timezone
-import datetime
+
 # Create your models here.
 class News(models.Model):
     news_id = models.UUIDField("News Id", primary_key=True, default=uuid.uuid4, editable=False)
@@ -9,7 +8,7 @@ class News(models.Model):
     news_agency = models.CharField("News Agency", max_length=10)
     reporter = models.CharField("Reporter", max_length=20)
     created_date = models.DateField("Created Date")
-    news_content = models.TextField("News Content", db_collation="utf8mb4_unicode_ci")
+    news_content = models.TextField("News Content")
     origin_address = models.URLField("Origin Address")
     image_link = models.URLField("Image Link")
     tag = models.CharField("max_length", max_length=200)
