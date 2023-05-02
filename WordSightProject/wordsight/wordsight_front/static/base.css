@@ -54,6 +54,12 @@ footer {
     font-weight: 400;
 }
 
+#category1:hover, #category1:active{
+    background-color: #F39C12;
+    border: 1px solid #F39C12;
+    color: #fff;
+}
+
 ol,
 ul {
     list-style: none;
@@ -61,4 +67,11 @@ ul {
 blockquote,
 q {
     quotes: none;
+}
+input:focus {
+    outline: none;
+    border-style: none;
+}
+input[type="checkbox"]  {
+    display: none;
 }

@@ -1,22 +1,22 @@
 <section id="main-content" class="w-full">
-    <form class="flex flex-col justify-center w-full">
-        <span class="sr-only">Search</span>
-        <button class="w-fit translate-x-2 translate-y-14 flex items-center pl-4" type="submit">
-            <svg id="그룹_1" data-name="그룹 1" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
-                <path id="패스_1" data-name="패스 1" d="M16.8,4a12.8,12.8,0,1,0,7.192,23.392L31.9,35.3A2.4,2.4,0,0,0,35.3,31.9l-7.912-7.912A12.795,12.795,0,0,0,16.8,4Zm-8,12.8a8,8,0,1,1,8,8A8,8,0,0,1,8.8,16.8Z" fill="#212121"/>
-                <path id="패스_2" data-name="패스 2" d="M0,0H40V40H0Z" fill="none"/>
-            </svg>
-        </button>
-        <input class="box-border placeholder:text-slate-400 w-full mx-2.5 bg-white rounded-3xl py-6 px-20 shadow-3xl text-base focus:border-none" 
-        placeholder="원하는 키워드를 검색하세요." type="text" name="search">
-        </input>
-    </form>
-    <span class="news-card-wrap">
-        <div id="news-card">
-            <img class="aspect-video" src="" alt="">
-            <div>기사제목</div>
-            <div>언론사|기자</div>
-            <p>본문</p>
-        </div>
-    </span>
+    <!--카드형 뉴스 격자식으로 디스플레이, 뉴스 필터 기능-->
+    <div class="news-display w-full flex my-10 justify-between">
+        <span class="news-card-wrap grid grid-cols-3 gap-5">
+            <!--뉴스카드 반복문-->
+            {%for j in '012345678'|make_list %}
+                {%include 'partial/newsCard.html' with title="제목없음" %}
+            {% endfor %}
+        </span>
+        <!--뉴스카드 필터-->
+        <span class="news-filter max-w-xs divide-y rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
+            <div>
+                <h3 class="text-xl font-medium">분야 (8)</h3>
+                {%include 'partial/filterList.html' with tag_list='전체 정치 경제 사회 문화 국제 지역 스포츠 IT_과학'%}
+            </div>
+            <div>
+                <h3 class="text-xl font-medium mt-2.5">언론사 (54)</h3>
+                {%include 'partial/filterList.html' with tag_list="전체 경향신문 국민일보 내일신문 동아일보 문화일보 서울신문 세계일보 조선일보 중앙일보"%}
+            </div>
+        </span>
+    <div>
 </section>
