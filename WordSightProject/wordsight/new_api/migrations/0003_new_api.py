@@ -11,6 +11,8 @@ def load_file(apps, schema_editor):
         data = json.load(json_file)
         for elem in data:
             tag_split = re.split(r'\s+', re.sub(r'[,\-!?>|]', ' ', elem["tag"]))
+            # 기자 이름 필터링 필요. 예) 기자이름|기자| -> 기자이름
+            # 스트링 공백제거 필요
             news_model = News_model.objects.create(
                 title = elem["title"],
                 reporter = elem["reporter"],

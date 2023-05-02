@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<style>
+    .welcome-intro-text {
+        font-weight:900;
+        font-size: 2rem;
+    }
+    .welcome-intro-eng {
+        line-height:20px;
+    }
+    #welcome-intro {
+        height: 250px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<div class="main-wrap">
+    <section id="welcome-intro">
+        <div class="welcome-intro-eng decorate-text">
+            GET YOUR WORD-SIGHT
+        </div>
+        <div class="welcome-intro-text">
+            원하는 키워드를 입력하고 워드사이트를 확인하세요
+        </div>
+    </section>
+    {% include "partial/mainContent.html"%}
+</div>
+{% endblock%}
