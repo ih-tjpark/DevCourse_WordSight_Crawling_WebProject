@@ -9,6 +9,5 @@ urlpatterns = [
     path("more/", views.more, name="more"),
     path("search/", views.search, name="search"),
     path("<uuid:news_id>/", views.detail, name="detail"),
-    
 ]
 
