@@ -1,14 +1,43 @@
 {% extends 'content.html' %}
 <!--키워드 분석페이지-->
 {% block maincontent%}
-<section id="keyword-insight">
-    {{keyword}}
-    <div>
-        <div class="insight-main">
-
+<section id="keyword-insight" class="w-full max-w-[1080px]">
+    <div class="mx-2.5 flex my-10 justify-between gap-2.5">
+        <div class="insight-main w-3/4 bg-white p-8 grid rounded-2xl shadow-4xl gap-5">
+            <div class="text-2xl font-bold">
+                <!--param check-->
+                {{ keyword }} 단어는 최근 {{ count|default:0 }}번 언급되었습니다.
+            </div>
+            <div class="text-xl font-semibold">
+                관련분야
+            </div>
+            <div class="flex flex-row">
+                <!--관련 태그 리스트 가져오기-->
+                {% for i in "123"|make_list %}
+                    <a class="py-1 px-3 rounded-lg bg-active-gray text-white m-1">
+                        태그
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="text-xl font-semibold">
+                관련뉴스
+            </div>
+            <!--관련뉴스 필터링 쿼리 오브젝트 가져오기-->
+            <!--{% for each in news_query %}
+                {% include "partial/newsCardVertical.html" with news=each %}
+            {% endfor %}
+            -->
         </div>
-        <div class="insight-wordcloud">
-
+        <div class="insight-wordcloud w-1/4 flex flex-col rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
+            <div class="text-xl font-semibold mb-1.5">
+                주요 관련 단어
+            </div>
+            <!--관련단어 및 점수 리스트 object 가져오기-->
+            {% for val in "가나다"|make_list %}
+                <a href="{% url "WORDSIGHT:search" %}?q={{val}}" class="text-{{i}} font-semibold">
+                    단어이름
+                </a>
+            {% endfor %}
         </div>
     </div>
 </section>

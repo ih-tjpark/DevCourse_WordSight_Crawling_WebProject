@@ -4,8 +4,8 @@
     <div class="w-full flex my-10 justify-between">
         <div id="news-card-wrap" class="w-full grid gap-5">
             <!--뉴스카드 반복문 (기능 생성 후 수정)-->
-            {%for j in '012345678'|make_list %}
-                {%include 'partial/newsCard.html' with title="제목없음" %}
+            {%for each in news %}
+                {%include 'partial/newsCard.html' with news=each %}
             {% endfor %}
         </div>
 
