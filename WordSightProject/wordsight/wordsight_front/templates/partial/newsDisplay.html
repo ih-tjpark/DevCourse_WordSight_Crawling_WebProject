@@ -1,12 +1,14 @@
-<section id="news-display" class="w-full">
+
+<section id="news-display" class="mx-2 grid auto-rows-auto justify-items-center">
     <!--카드형 뉴스 격자식으로 디스플레이, 뉴스 필터 기능-->
     <div class="w-full flex my-10 justify-between">
-        <span class="news-card-wrap grid grid-cols-3 gap-5">
+        <div id="news-card-wrap" class="w-full grid gap-5">
             <!--뉴스카드 반복문 (기능 생성 후 수정)-->
             {%for j in '012345678'|make_list %}
                 {%include 'partial/newsCard.html' with title="제목없음" %}
             {% endfor %}
-        </span>
+        </div>
+
         <!--뉴스카드 필터 (기능 생성 후 수정)-->
         <span class="news-filter max-w-xs divide-y rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
             <div>
@@ -18,14 +20,19 @@
                 {%include 'partial/filterList.html' with tag_list="전체 경향신문 국민일보 내일신문 동아일보 문화일보 서울신문 세계일보 조선일보 중앙일보"%}
             </div>
         </span>
-    <div>
-    <div>
-        {% if {{ request.path }} == ""  %}
-            <a href="{% url 'more' %}" class="">더보기</a>    
+    </div>
+    <div class="pagnation">
+        {% if request.path == "/"  %}
+            <a href="{% url "WORDSIGHT:more" %}" class="select_button">더보기</a>    
         {% else %}
-            <button>left</button>
-            <button>curr</button>
-            <button>right</button>
+            <a class="select_button">
+                left
+            </a>
+            <a class="select_button">
+                curr page number</a>
+            <a class="select_button">
+                right
+            </a>
         {% endif %}
     </div>
 </section>

@@ -21,3 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("wordsight_front.urls")),
 ]
+
+handler404 = "wordsight_front.views.error404view"
+handler500 = "wordsight_front.views.error404view"

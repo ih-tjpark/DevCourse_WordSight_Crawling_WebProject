@@ -1,0 +1,21 @@
+{% extends 'content.html' %}
+
+{% block maincontent%}
+<section id="404error" class="w-full">
+    <div class="bg-white my-10 mx-2 rounded-2xl shadow-4xl py-16 px-10 grid grid-flow-row justify-items-center gap-2.5">
+        <svg id="그룹_101" data-name="그룹 101" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+            <path id="패스_41" data-name="패스 41" d="M40.981,10.56A30.421,30.421,0,1,1,10.56,40.981,30.415,30.415,0,0,1,40.981,10.56Z" transform="translate(20.427 20.427)" fill="#2980ba"/>
+            <path id="패스_42" data-name="패스 42" d="M60,0A60,60,0,1,1,0,60,60.015,60.015,0,0,1,60,0Z" fill="#edf0f1"/>
+            <path id="패스_43" data-name="패스 43" d="M40.981,10.56A30.421,30.421,0,1,1,10.56,40.981,30.415,30.415,0,0,1,40.981,10.56Z" transform="translate(20.427 20.427)" fill="#3b97d3"/>
+            <path id="패스_44" data-name="패스 44" d="M43.079,65.025A30.417,30.417,0,0,1,20.547,14.17,30.418,30.418,0,1,0,63.513,57.136,30.321,30.321,0,0,1,43.079,65.025Z" transform="translate(19.226 25.799)" fill="#2980ba"/>
+            <path id="패스_45" data-name="패스 45" d="M31.877,18.24A13.637,13.637,0,1,1,18.24,31.877,13.655,13.655,0,0,1,31.877,18.24Z" transform="translate(29.376 29.376)" fill="#35495e"/>
+            <path id="패스_46" data-name="패스 46" d="M32.771,16.8a7.343,7.343,0,1,1-7.321,7.343A7.345,7.345,0,0,1,32.771,16.8Z" transform="translate(39.476 26.06)" fill="#fff"/>
+            <path id="패스_47" data-name="패스 47" d="M60,4.2c32.325,0,58.675,22.357,59.95,50.353.025-.7.05-1.4.05-2.1C120,23.494,93.125,0,60,0S0,23.494,0,52.451c0,.7.025,1.4.05,2.1C1.325,26.553,27.675,4.2,60,4.2Z" fill="#bdc2c7"/>
+            <path id="패스_48" data-name="패스 48" d="M0,0H120V120H0Z" fill="none"/>
+        </svg>
+        <h1 class="text-bright-red text-[40px] font-bold">404 ERROR</h1>
+        <h2 class="text-2xl font-semibold">존재하지 않는 페이지입니다.</h2>
+        <a href="{% url "WORDSIGHT:index" %}">홈화면으로 돌아기기</a>
+    </div>
+</section>
+{% endblock%}
