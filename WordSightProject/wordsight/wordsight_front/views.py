@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
@@ -12,3 +13,4 @@ def detail(request, news_id):
 
 def more(request):
     return render(request, "pages/more.html")
+
