@@ -9,3 +9,6 @@ def insight(request, keyword):
 
 def detail(request, news_id):
     return render(request, "pages/detail.html", {"news_id": news_id})
+
+def more(request):
+    return render(request, "pages/more.html")
