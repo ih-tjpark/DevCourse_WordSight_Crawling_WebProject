@@ -1,0 +1,24 @@
+
+#news-card-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    grid-template-rows: auto auto;
+    justify-items: center;
+}
+
+.select_button {
+    padding: 0.5rem 1rem;
+    border-radius: 24px;
+    margin: 0.125rem;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.select_button:hover, .select_button:active {
+    background-color: #757575;
+    color: #fff;
+}
+
+.pagnation {
+    height: 40px;
+    margin: 20px 0;
+}

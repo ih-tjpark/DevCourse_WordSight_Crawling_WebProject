@@ -1,5 +1,5 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
-
+@import url("component/newsDisplay.css");
 body {
     font-size: 100%;
     margin: 0;
@@ -60,6 +60,10 @@ footer {
     color: #fff;
 }
 
+a {
+    text-decoration: none;
+    color: none;
+}
 ol,
 ul {
     list-style: none;
