@@ -15,9 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+# <<<<<<< HEAD
 from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('news_api/', include('new_api.urls'))
+    path('news_api/', include('new_api.urls')),
+    path("", include("wordsight_front.urls"))
 ]
+
+handler404 = "wordsight_front.views.error404view"
+handler500 = "wordsight_front.views.error404view"

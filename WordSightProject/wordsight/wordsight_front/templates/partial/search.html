@@ -1,0 +1,25 @@
+<!--검색창-->
+<form action="{% url 'WORDSIGHT:search' %}" method="GET" class="box-border flex flex-col mx-2 bg-white rounded-3xl shadow-3xl"> 
+
+    <span class="sr-only">Search</span>
+    <!--검색 아이콘 버튼-->
+    <button class="w-fit translate-x-2 translate-y-12 z-10 flex items-center pl-4" type="submit">
+        <svg id="그룹_1" data-name="그룹 1" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+            <path id="패스_1" data-name="패스 1" d="M16.8,4a12.8,12.8,0,1,0,7.192,23.392L31.9,35.3A2.4,2.4,0,0,0,35.3,31.9l-7.912-7.912A12.795,12.795,0,0,0,16.8,4Zm-8,12.8a8,8,0,1,1,8,8A8,8,0,0,1,8.8,16.8Z" fill="#212121"/>
+            <path id="패스_2" data-name="패스 2" d="M0,0H40V40H0Z" fill="none"/>
+        </svg>
+    </button>
+    <input class="translate-y-[-10px] placeholder:text-slate-400 w-full bg-white py-6 px-20 text-base border-none active:border-none focus:border-none" 
+    placeholder="원하는 키워드를 검색하세요." type="text" name="q">
+
+    </input>
+    <!--트렌트 키워드 리스트-->
+    <div class="block justify-center mx-4 rounded-3xl pb-5">
+        {%for i in '0123456789'|make_list %}
+            <button href="{% url "WORDSIGHT:search" %}" class="bg-point{{forloop.counter}} py-2 px-5 mx-1 mt-1.5 rounded-4xl text-base text-white">
+
+                #트렌드
+            </button>
+        {% endfor %}
+    </div>
+</form>
