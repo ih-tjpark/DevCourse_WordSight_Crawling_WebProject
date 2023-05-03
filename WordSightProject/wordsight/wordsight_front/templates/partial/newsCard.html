@@ -1,0 +1,6 @@
+<div id="news-card" class="w-64 flex flex-col items-stretch gap-1.5 rounded-2xl bg-white py-5 px-5 mx-2 shadow-4xl">
+    <div class="flex h-32 bg-slate-500 rounded-[8px]"></div>
+    <div class="text-base font-semibold">{{ title|default:"제목" }}</div>
+    <div class="text-xs">{{ news_agency|default:"언론사" }} | {{ reporter|default:"기자" }}</div>
+    <p class="text-xs">{{ news_content|default:"내용" }}</p>
+</div>
