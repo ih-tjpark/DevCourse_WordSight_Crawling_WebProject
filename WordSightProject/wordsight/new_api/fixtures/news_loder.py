@@ -7,6 +7,7 @@ with open('new_api/fixtures/news_data.json', 'r', encoding='UTF-8') as f:
 new_list = []
 for news in news_list:
     new_data = {"model": "new_api.news"}
+    news_keyword_data = {"model": "new_api.news_keyword"}
     new_data["fields"] = {}
     new_data["fields"]["title"] = news["title"]
     new_data["fields"]["news_agency"] = news["news_agency"]
