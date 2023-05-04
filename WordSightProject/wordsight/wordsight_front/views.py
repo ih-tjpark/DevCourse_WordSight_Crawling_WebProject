@@ -8,7 +8,7 @@ def index(request):
     news = News.objects.all()[:12]
     context = {'news': news}
     return render(request, "pages/home.html", context)
-    
+
 def detail(request, news_id):
     news = get_object_or_404(News, news_id=news_id)
     context = {'news': news}
@@ -29,3 +29,4 @@ def search(request):
             return render(request, "pages/insight.html", {"keyword": keyword})
         else:
             return render(request, "pages/home.html")
+#2b0b6200e8c6595c0395d79420c26d7e01c79c71
