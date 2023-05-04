@@ -10,7 +10,12 @@ class NewsSerializer(serializers.ModelSerializer):
 class KeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Keyword
+<<<<<<< Updated upstream
         fields = '__all__'        
+=======
+        fields = '__all__'
+        
+>>>>>>> Stashed changes
         
         
 class NewsKeywordSerializer(serializers.ModelSerializer):
