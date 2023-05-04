@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'new_api.apps.NewApiConfig',
     'rest_framework',
-    "new_api",
     "wordsight_front"
 ]
 

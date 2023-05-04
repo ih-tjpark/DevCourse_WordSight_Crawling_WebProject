@@ -10,12 +10,11 @@ class NewsSerializer(serializers.ModelSerializer):
 class KeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Keyword
-        fields = []
-        
+        fields = '__all__'        
         
         
 class NewsKeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = News_Keyword
-        fields = []
+        fields = '__all__'
         

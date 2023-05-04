@@ -59,25 +59,6 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
-            name='NewsKeyword',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200)),
-                ('keyword_id', models.OneToOneField(db_column='keyword_id', on_delete=django.db.models.deletion.CASCADE, to='new_api.keyword')),
-                ('news_id', models.ForeignKey(db_column='news_id', on_delete=django.db.models.deletion.CASCADE, to='new_api.news')),
-# =======
-                ('news_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='News Id')),
-                ('title', models.CharField(max_length=200, verbose_name='Title')),
-                ('news_agency', models.CharField(max_length=10, verbose_name='News Agency')),
-                ('reporter', models.CharField(max_length=20, verbose_name='Reporter')),
-                ('created_date', models.DateField(verbose_name='Created Date')),
-                ('news_content', models.TextField(verbose_name='News Content')),
-                ('origin_address', models.URLField(verbose_name='Origin Address')),
-                ('image_link', models.URLField(verbose_name='Image Link')),
-                ('tag', models.CharField(max_length=200, verbose_name='max_length')),
-            ],
-        ),
-        migrations.CreateModel(
             name='News_Keyword',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
