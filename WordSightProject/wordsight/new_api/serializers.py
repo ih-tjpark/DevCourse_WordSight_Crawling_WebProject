@@ -4,20 +4,14 @@ from rest_framework import serializers
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = '__all__'
+        fields = ["news_id", "origin_address", "title", "created_date"]
         
         
 class KeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Keyword
-<<<<<<< Updated upstream
-        fields = '__all__'        
-=======
         fields = '__all__'
-        
->>>>>>> Stashed changes
-        
-        
+
 class NewsKeywordSerializer(serializers.ModelSerializer):
     class Meta:
         model = News_Keyword

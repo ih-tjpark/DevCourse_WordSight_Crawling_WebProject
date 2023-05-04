@@ -29,11 +29,8 @@ class NewsDetail(generics.ListAPIView):
 class KeywordList(generics.ListAPIView):
     queryset = Keyword.objects.all()
     serializer_class = KeywordSerializer
-<<<<<<< Updated upstream
-=======
 
 # 주요 관련 키워드 보여주는 역할
 
 
 # 
->>>>>>> Stashed changes

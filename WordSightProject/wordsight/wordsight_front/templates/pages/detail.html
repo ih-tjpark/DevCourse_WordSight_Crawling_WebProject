@@ -1,8 +1,48 @@
 {% extends 'content.html' %}
 <!--뉴스 상세페이지-->
 {% block maincontent%}
-<section id="news-detail">
-    <div>
+<section id="news-detail" class="w-full max-w-[1080px]">
+    <div class="bg-white my-10 mx-2.5 rounded-2xl shadow-4xl py-10 px-10 grid grid-flow-row justify-items-start gap-2.5">
+        <a href="../">
+            <svg id="그룹_85" data-name="그룹 85" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+                <g id="그룹_84" data-name="그룹 84" transform="translate(36) rotate(90)" opacity="0">
+                  <path id="패스_19" data-name="패스 19" d="M0,0H36V36H0Z" fill="#fff"/>
+                </g>
+                <path id="패스_20" data-name="패스 20" d="M26.75,16.856H11.925l4.538-4.983a1.077,1.077,0,0,0-.163-1.612,1.332,1.332,0,0,0-1.762.149l-6.25,6.858a1.342,1.342,0,0,0-.113.171c0,.057,0,.091-.087.149A1.038,1.038,0,0,0,8,18H8a1.038,1.038,0,0,0,.087.411c0,.057,0,.091.087.149a1.342,1.342,0,0,0,.113.171l6.25,6.858A1.3,1.3,0,0,0,15.5,26a1.317,1.317,0,0,0,.8-.263,1.126,1.126,0,0,0,.45-.777,1.1,1.1,0,0,0-.287-.834l-4.538-4.983H26.75a1.148,1.148,0,1,0,0-2.286Z" fill="#231f20"/>
+                <path id="패스_21" data-name="패스 21" d="M0,0H36V36H0Z" fill="none"/>
+            </svg>
+        </a>
+        <div class="text-[20px] font-bold">
+            {{news.news_agency}}
+        </div>
+        <div class="flex">
+            <div class="text-[28px] font-bold flex-auto">
+                {{news.title}}
+            </div>
+            <a href="http://www.kado.net/news/articleView.html?idxno=1181146" target="blank" class="flex-auto py-2 px-4 mx-5 rounded-3xl border-solid border-[1px] border-gray-line hover:bg-gray-line active:bg-active-gray active:text-white active:border-active-gray">
+                원문보기
+            </a>
+        </div>
+        <div class="flex divide-x divide-slate-600">
+            <div class="text-base font-regular flex-auto px-2.5">
+                {{news.created_date|date:"Y년 m월 d일"}}
+            </div>
+            <div class="text-base font-regular flex-auto px-2.5">
+                {{news.reporter}}
+            </div>
+        </div>
+        <div class="flex">
+            <!--관련 태그 리스트 가져오기-->
+            {% for i in "123"|make_list %}
+            <a class="py-0.5 px-2.5 rounded-lg bg-active-gray text-white m-1">
+                태그
+            </a>
+            {% endfor %}
+        </div>
+        <img src="https://www.bigkinds.or.kr/resources/images/01300101/2023/05/02/01300101.20230502131132001.01.jpg" alt="" class="w-full"/>
+        <p class="w-full break-words whitespace-break-spaces">
+            {{news.news_content}}
+        </p>
         <!--여기에 추가해주세요-->
     </div>
 </section>
