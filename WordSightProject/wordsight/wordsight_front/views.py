@@ -5,7 +5,7 @@ from new_api.models import News
 
 # Create your views here.
 def index(request):
-    news = News.objects.all()
+    news = News.objects.all()[:12]
     context = {'news': news}
     return render(request, "pages/home.html", context)
     
