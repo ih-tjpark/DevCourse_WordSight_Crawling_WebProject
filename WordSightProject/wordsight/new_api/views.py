@@ -31,6 +31,3 @@ class KeywordList(generics.ListAPIView):
     serializer_class = KeywordSerializer
 
 # 주요 관련 키워드 보여주는 역할
-
-
-# 
