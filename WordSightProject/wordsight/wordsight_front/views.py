@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from new_api.models import News
+from new_api.keyword_analysis import get_relation_keyword
 
 # Create your views here.
 def index(request):
@@ -26,7 +27,8 @@ def search(request):
     if request.method == "GET":
         keyword = request.GET.get('q')
         if keyword:
-            return render(request, "pages/insight.html", {"keyword": keyword})
+            relation_keyword = get_relation_keyword(keyword)
+            return render(request, "pages/insight.html", {"keyword": keyword, "relation_keyword":relation_keyword})
         else:
             return render(request, "pages/home.html")
 
