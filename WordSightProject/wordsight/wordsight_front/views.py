@@ -1,9 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
-from new_api import models
+from new_api.models import *
+from new_api.views import *
 
 # Create your views here.
 def index(request):
+    
     return render(request, "pages/home.html")
     
 def detail(request, news_id):
