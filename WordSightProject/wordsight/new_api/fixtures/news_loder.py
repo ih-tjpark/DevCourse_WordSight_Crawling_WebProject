@@ -1,6 +1,6 @@
 import json 
 import re
-with open('WordSightProject/wordsight/new_api/news_data.json', 'r', encoding='UTF-8') as f:
+with open('new_api/fixtures/news_data.json', 'r', encoding='UTF-8') as f:
     news_list = json.load(f)
 # print(news_list)
 
@@ -17,17 +17,9 @@ for news in news_list:
     new_data["fields"]["reporter"] = news["reporter"]
     new_data["fields"]["image_link"] = news["image"]
     new_data["fields"]["news_contents"] = news["news_contents"]
+
     new_list.append(new_data)
 
 
 with open('news_data_test.json', 'w', encoding='UTF-8') as f:
     json.dump(new_list, f, ensure_ascii=False, indent=2)
-    
-# reporter = ['김철수' ,'박민수|기자', '이진우|더벨 편집국장|','이수민(lee.sumin1@joongang.co.kr)','뉴욕=박준식|특파원|', '뉴욕=조슬기나','도병욱/오형주','조성호기자 csh@kwnews.co.kr']
-# re.split(r'\s+', re.sub(r'[,\-?>|]',' ', news["tag"])
-
-
-# for i in reporter:
-#     res = re.sub(r'\b\w+@\w+\.\w+\b', '', i)
-#     # res = re.sub(r'[^\w\s]', ' ', i)
-#     print(res)

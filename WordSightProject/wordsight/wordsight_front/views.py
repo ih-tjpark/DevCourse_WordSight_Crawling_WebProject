@@ -29,4 +29,4 @@ def search(request):
             return render(request, "pages/insight.html", {"keyword": keyword})
         else:
             return render(request, "pages/home.html")
-#2b0b6200e8c6595c0395d79420c26d7e01c79c71
+

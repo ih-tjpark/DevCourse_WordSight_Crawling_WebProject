@@ -8,9 +8,9 @@ class News(models.Model):
     created_date = models.DateField()
     news_agency = models.CharField(max_length=10)
     reporter = models.CharField(max_length=20)
-    region = models.CharField(max_length=200)
-    people = models.CharField(max_length=200)
-    company = models.CharField(max_length=200)
+    region = models.CharField(max_length=200, null=True)
+    people = models.CharField(max_length=200, null=True)
+    company = models.CharField(max_length=200, null=True)
     tag = models.CharField(max_length=200)              # 추후 결정 
     news_contents = models.TextField()
     image_link = models.URLField()
