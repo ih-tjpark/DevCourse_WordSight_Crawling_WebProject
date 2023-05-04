@@ -33,9 +33,10 @@
                 주요 관련 단어
             </div>
             <!--관련단어 및 점수 리스트 object 가져오기-->
-            {% for val in "가나다"|make_list %}
+            {% for key, value in relation_keyword.items %}
                 <a href="{% url "WORDSIGHT:search" %}?q={{val}}" class="text-{{i}} font-semibold">
-                    단어이름
+                    {{key}} 
+                    {{value}}
                 </a>
             {% endfor %}
         </div>
