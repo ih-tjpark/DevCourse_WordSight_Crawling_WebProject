@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
-from new_api.models import News,Keyword
+from new_api.models import News, Keyword, Tag
 from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
 import requests
@@ -31,6 +31,14 @@ def updateNews(request):
         params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))
     response = requests.get(url, params=params)
     news_obj = response.json()["results"]
+
+    tag_list = params['tags'].split(',')
+    tag = Tag.objects.filter(class1=tag_list[0])
+    #print(params['tags'].split(','))
+    print(tag[0].news_set.all())
+    #news_obj = tag
+    news_obj = tag[0].news_set.all()
+    
     rendered = render_to_string("partial/newsDisplay.html", {"news": news_obj})
     return HttpResponse(rendered, content_type="text/plain")
 
