@@ -5,12 +5,10 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from new_api.models import News
 from new_api.views import NewsList
-from rest_framework import generics
 from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
 import requests
-from new_api.serializers import NewsSerializer
-from rest_framework.pagination import PageNumberPagination
+
 
 def index(request):
     news_list = NewsList.as_view()(request).data['results']
