@@ -28,7 +28,6 @@ for news in news_list:
     new_data["fields"]["news_contents"] = news["news_contents"]
     new_data["fields"]['keyword_list'] = json.dumps(news['keyword'])
 
-
     new_list.append(new_data)
 
 

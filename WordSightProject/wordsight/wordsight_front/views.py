@@ -40,17 +40,3 @@ def search(request):
                 return render(request, "pages/emptyWord.html")
         else:
             return render(request, "pages/home.html")
-
-#def modelmultiplechoicefield(request):
-#    form = InterestTagWidget(request.POST or None)
-#    if request.POST and form.is_valid():
-#        tags_interest=form.cleaned_data['tags_interest']
-#        tags_agency=form.cleaned_data['tags_agency']
-#        obj = TagChoices(tags_interest=tags_interest, tags_agency=tags_agency)
-#        obj.save()
-#        form2 = InterestTagWidget(request.POST, instance=obj)
-#        form2.save(commit=False)
-#        form2.save_m2m()
-#        return redirect('home')
-#    context = {'form':form}
-#    return render(request, 'partial/newsDisplay.html',context)
