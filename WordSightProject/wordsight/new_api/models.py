@@ -1,6 +1,18 @@
 from django.db import models
 import uuid
 
+    
+class Keyword(models.Model):
+    keyword_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=200)
+    count = models.IntegerField()
+    in_date = models.CharField(max_length=200)
+
+class Tag(models.Model):
+    tag_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    class1 = models.CharField(max_length=20)
+    class2 = models.CharField(max_length=20)
+
 class News(models.Model):
     news_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     origin_address = models.URLField()
@@ -11,18 +23,18 @@ class News(models.Model):
     region = models.CharField(max_length=200, null=True)
     people = models.CharField(max_length=200, null=True)
     company = models.CharField(max_length=200, null=True)
-    tag = models.CharField(max_length=200)              # 추후 결정 
+    tag = models.ManyToManyField(Tag)             # 추후 결정
+    tag_list = models.TextField(null=True)
     news_contents = models.TextField()
     image_link = models.URLField()
-    
-class Keyword(models.Model):
-    keyword_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=200)
-    count = models.IntegerField()
-    in_date = models.CharField(max_length=200)
-    
-class News_Keyword(models.Model):
-    news_id = models.ForeignKey(News, on_delete=models.CASCADE, db_column="news_id")
-    keyword_id = models.OneToOneField(Keyword, on_delete=models.CASCADE, db_column="keyword_id") # 여러 개 
-    name = models.CharField(max_length=200)
+    keyword_list = models.TextField(null=True)
+    keyword = models.ManyToManyField(Keyword)
+
+
+
+# class News_Keyword(models.Model):
+#     news_id = models.ForeignKey(News, on_delete=models.CASCADE, db_column="news_id")
+#     keyword_id = models.OneToOneField(Keyword, on_delete=models.CASCADE, db_column="keyword_id") # 여러 개 
+#     name = models.CharField(max_length=200)
+
 

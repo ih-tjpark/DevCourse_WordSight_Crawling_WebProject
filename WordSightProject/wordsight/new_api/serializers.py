@@ -12,8 +12,8 @@ class KeywordSerializer(serializers.ModelSerializer):
         model = Keyword
         fields = '__all__'
 
-class NewsKeywordSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = News_Keyword
-        fields = '__all__'
+# class NewsKeywordSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = News_Keyword
+#         fields = '__all__'
         
