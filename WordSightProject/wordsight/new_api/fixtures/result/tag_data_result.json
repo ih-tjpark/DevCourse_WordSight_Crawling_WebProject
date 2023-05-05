@@ -1,0 +1,604 @@
+[
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "자원"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "종교"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "야구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "미국_북미"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "대전"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "전북"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "야구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "축구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "아시아"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "선거"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "문화일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "요리_여행"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "농구_배구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "취업_창업"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "북한"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "외교"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "축구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "IT_과학",
+      "class2": "IT_과학일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "IT_과학",
+      "class2": "모바일"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "IT_과학",
+      "class2": "콘텐츠"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "영화"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "경기"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "의료_건강"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "중남미"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "교육_시험"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "IT_과학",
+      "class2": "인터넷_SNS"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "장애인"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "제주"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "국회_정당"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "음악"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "골프"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "야구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "청와대"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "증권_증시"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "중동_아프리카"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "출판"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "환경"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "자동차"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "광주"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "축구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "월드컵"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "중국"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "일본"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "정치일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "여성"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "충북"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "생활"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "IT_과학",
+      "class2": "과학"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "금융_재테크"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "국제일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "사회일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "무역"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "강원"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "서비스_쇼핑"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "울산"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "미술_건축"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "경북"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "미분류",
+      "class2": ""
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "외환"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "부산"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "정치",
+      "class2": "행정_자치"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "러시아"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "축구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "미디어"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "경남"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "대구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "전시_공연"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "국제",
+      "class2": "유럽_EU"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "IT_과학",
+      "class2": "보안"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "충남"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "날씨"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "지역일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "산업_기업"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "지역",
+      "class2": "전남"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "스포츠일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "부동산"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "경제일반"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "야구"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "방송_연예"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "반도체"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "국제경제"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "스포츠",
+      "class2": "올림픽_아시안게임"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "경제",
+      "class2": "유통"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "문화",
+      "class2": "학술_문화재"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "사건_사고"
+    }
+  },
+  {
+    "model": "new_api.tag",
+    "fields": {
+      "class1": "사회",
+      "class2": "노동_복지"
+    }
+  }
+]

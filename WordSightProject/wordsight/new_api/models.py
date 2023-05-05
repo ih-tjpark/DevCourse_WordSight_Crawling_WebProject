@@ -1,7 +1,8 @@
 from django.db import models
 import uuid
+
 import json
-    
+
 class Keyword(models.Model):
     keyword_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
@@ -34,5 +35,11 @@ class News(models.Model):
     #     jsonDec = json.decoder.JSONDecoder()
     #     return jsonDec.decode(self.tag_list)
 
+
+
+# class News_Keyword(models.Model):
+#     news_id = models.ForeignKey(News, on_delete=models.CASCADE, db_column="news_id")
+#     keyword_id = models.OneToOneField(Keyword, on_delete=models.CASCADE, db_column="keyword_id") # 여러 개 
+#     name = models.CharField(max_length=200)
 
 
