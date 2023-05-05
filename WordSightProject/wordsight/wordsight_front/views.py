@@ -1,4 +1,5 @@
 from functools import reduce
+import json
 from urllib.parse import urlparse
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
@@ -27,6 +28,7 @@ def updateNews(request):
         params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
     if request.GET.getlist('agencys'):
         params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))
+
     response = requests.get(url, params=params)
     news_obj = response.json()["results"]
     rendered = render_to_string("partial/newsDisplay.html", {"news": news_obj})

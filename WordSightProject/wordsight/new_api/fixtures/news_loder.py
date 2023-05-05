@@ -1,6 +1,6 @@
 import json 
 import re
-with open('crawling_data_real_final.json', 'r', encoding='UTF-8') as f:
+with open('news_data_result.json', 'r', encoding='UTF-8') as f:
     news_list = json.load(f)
 # print(news_list)
 jsonDec = json.decoder.JSONDecoder()
