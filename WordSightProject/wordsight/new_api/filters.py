@@ -36,7 +36,6 @@ class WordFilter(filters.BaseFilterBackend):
         return queryset
 
     def filter_instance(self, instance):
-        print("when enter")
         jsonDec = json.decoder.JSONDecoder()
         decoded_tag_list = jsonDec.decode(instance.tag_list) if instance.tag_list is not None else []
         instance.tag_list = decoded_tag_list

@@ -28,7 +28,6 @@ def updateNews(request):
         params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
     if request.GET.getlist('agencys'):
         params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))
-
     response = requests.get(url, params=params)
     news_obj = response.json()["results"]
     rendered = render_to_string("partial/newsDisplay.html", {"news": news_obj})
