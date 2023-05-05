@@ -11,8 +11,8 @@ class Keyword(models.Model):
 
 class Tag(models.Model):
     tag_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    class1 = models.CharField(max_length=20)   
-    class2 = models.CharField(max_length=20)
+    class1 = models.CharField(max_length=20,null=True)
+    class2 = models.CharField(max_length=20, null=True)
 
 class News(models.Model):
     news_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -24,16 +24,22 @@ class News(models.Model):
     region = models.CharField(max_length=200, null=True)
     people = models.CharField(max_length=200, null=True)
     company = models.CharField(max_length=200, null=True)
-    tag = models.ManyToManyField(Tag)            
+    tag = models.ManyToManyField(Tag)            # 추후 결정
     tag_list = models.TextField(null=True)
     news_contents = models.TextField()
     image_link = models.URLField()
     keyword_list = models.TextField(null=True)
     keyword = models.ManyToManyField(Keyword)
+    # @property
+    # def get_tag_list(self):
+    #     jsonDec = json.decoder.JSONDecoder()
+    #     return jsonDec.decode(self.tag_list)
 
-    @property
-    def get_tag_list(self):
-        jsonDec = json.decoder.JSONDecoder()
-        return jsonDec.decode(self.tag_list)
+
+
+# class News_Keyword(models.Model):
+#     news_id = models.ForeignKey(News, on_delete=models.CASCADE, db_column="news_id")
+#     keyword_id = models.OneToOneField(Keyword, on_delete=models.CASCADE, db_column="keyword_id") # 여러 개 
+#     name = models.CharField(max_length=200)
 
 

@@ -1,4 +1,3 @@
-
 from django.db import migrations, models
 import uuid
 
@@ -24,8 +23,8 @@ class Migration(migrations.Migration):
             name='Tag',
             fields=[
                 ('tag_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('class1', models.CharField(max_length=20)),
-                ('class2', models.CharField(max_length=20)),
+                ('class1', models.CharField(max_length=20, null=True)),
+                ('class2', models.CharField(max_length=20, null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -45,7 +44,7 @@ class Migration(migrations.Migration):
                 ('image_link', models.URLField()),
                 ('keyword_list', models.TextField(null=True)),
                 ('keyword', models.ManyToManyField(to='new_api.keyword')),
-                ('tag', models.ManyToManyField(to='new_api.tag')),
+                ('tag', models.ManyToManyField(related_name='related_tag', to='new_api.tag')),
             ],
         ),
     ]
