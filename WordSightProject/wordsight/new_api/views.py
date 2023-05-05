@@ -3,34 +3,23 @@ from .serializers import *
 from .paginators import *
 from rest_framework import generics, filters
 from rest_framework.response import Response
-import django_filters 
-from django_filters import rest_framework as filters 
-from rest_framework.pagination import PageNumberPagination
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.viewsets import ModelViewSet
 from .filters import *
 
-
-class MultiValueCharFilter(filters.BaseCSVFilter, filters.CharFilter):
-    def filter(self, qs, value):
-        # value is either a list or an 'empty' value
-        values = value or []
-
-        for value in values:
-            qs = super(MultiValueCharFilter, self).filter(qs, value)
-
-        return qs
-
-class InterestTagFilter(django_filters.FilterSet):
-    interest__contains = MultiValueCharFilter(name='tag', lookup_expr='contains')
-    class Meta:
-        search_fields = ["__all__"]
-
+class CustomPagination(PageNumberPagination):
+    page_size = 12
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
 
 class NewsList(generics.ListAPIView):
     queryset = News.objects.all().order_by('-created_date')
     serializer_class = NewsSerializer
     pagination_class = CustomPagination
-
+    def get(self, request, *args, **kwargs):
+        response = self.list(request, *args, **kwargs)
+        response.data['page_obj'] = self.paginator.page
+        return response
 
 class SearchViewSet(ModelViewSet):
     queryset = News.objects.all()
