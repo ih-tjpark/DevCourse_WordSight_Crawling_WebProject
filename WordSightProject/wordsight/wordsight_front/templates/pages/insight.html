@@ -7,7 +7,7 @@
         <div class="insight-main w-3/4 bg-white p-8 grid rounded-2xl shadow-4xl gap-5">
             <div class="text-2xl font-bold">
                 <!--param check-->
-                {{ keyword }} 단어는 최근 {{ count|default:0 }}번 언급되었습니다.
+                {{ keyword.name }} 단어는 최근 {{ keyword.count|default:0 }}번 언급되었습니다.
             </div>
             <div class="text-xl font-semibold">
                 관련분야
@@ -22,6 +22,15 @@
             </div>
             <div class="text-xl font-semibold">
                 관련뉴스
+                <br>
+                {%for i in news %}
+                    <a href="{% url "WORDSIGHT:detail" i.news_id %}" id="news-card" class="w-64 flex flex-col items-stretch gap-1.5 rounded-2xl bg-white py-5 px-5 mx-2 shadow-4xl">
+                        <img class="inline rounded-[8px] h-[140px]" src={{i.image_link}} alt=""/>
+                        <div class="text-base font-semibold">{{ i.title|default:"제목" }}</div>
+                        <div class="text-xs">{{ i.news_agency|default:"언론사" }} | {{ i.reporter|default:"기자" }}</div>
+                        <p class="text-xs" style="display: -webkit-box;overflow: hidden;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{ i.news_contents|default:"내용" }}</p>
+                    </a>
+                {%endfor%}
             </div>
             <!--관련뉴스 필터링 쿼리 오브젝트 가져오기-->
             <!--{% for each in news_query %}
@@ -35,9 +44,15 @@
             </div>
             <!--관련단어 및 점수 리스트 object 가져오기-->
             {% for key, value in relation_keyword.items %}
+<<<<<<< HEAD
+                <a href="{% url "WORDSIGHT:search" %}?q={{val}}" class="text-{{i}} font-semibold">
+                    {{key}} 
+                    {{value}}
+=======
                 <a href="{% url "WORDSIGHT:search" %}?q={{key}}" 
                 class="text-[{{value|mul:100|mod:90|mul:4}}px] text-point{{forloop.counter}} font-semibold">
                     {{key}}
+>>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085
                 </a>
             {% endfor %}
         </div>
