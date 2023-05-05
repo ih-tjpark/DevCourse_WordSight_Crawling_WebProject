@@ -61,9 +61,9 @@
             fetch(`getNews/?tags=${querydict["tag"]}&agencys=${querydict["agency"]}`)
             .then(response => response.text())
             .then(text => {
-                console.log(text);
+                console.log(`?tags=${querydict["tag"]}&agencys=${querydict["agency"]}`);
                 document.querySelector('#news-display').innerHTML = text;
-            });
+            })
         }
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('div[name="interest_tag_div"],div[name="agency_tag_div"]').forEach(element => {
