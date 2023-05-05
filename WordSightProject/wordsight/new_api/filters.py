@@ -28,9 +28,9 @@ class WordFilter(filters.BaseFilterBackend):
         if tags:
             for tag in tags.split(','):
                 news_filter |= Q(tag_list__contains=tag)
-        #if agencys:
-        #    for agency in agencys.split(','):
-        #        news_filter |= Q(news_agency=agency)
+        if agencys:
+            for agency in agencys.split(','):
+                news_filter |= Q(news_agency=agency)
         queryset = queryset.filter(news_filter)
         print(queryset)
         return queryset

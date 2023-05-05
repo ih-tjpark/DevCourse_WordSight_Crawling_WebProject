@@ -44,7 +44,8 @@
                         "active-gray" : "#757575",
                         "gray-line": "#BDBDBD",
                         "mustard" : "#F39C12",
-                        "bright-red": "#E74C3C"
+                        "bright-red": "#E74C3C",
+                        "green":"#16A085"
                     }
                 },
                 borderRadius: {
@@ -90,7 +91,9 @@
     {% if request.path == "/"  %}
         {% include "partial/intro.html" %}
     {% endif %}
+    <div class="w-full max-w-[1080px]">
     {% include "partial/search.html" %}
+    </div>
     {% block content%}
         <section id="news-cards" class="w-full max-w-[1080px] flex flex-row my-10">
             {%include "partial/newsDisplay.html"%}
