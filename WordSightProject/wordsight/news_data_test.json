@@ -5,7 +5,11 @@
       "title": "동해 묵호 앞바다서 밍크고래 그물에 걸려 4500만원에 판매",
       "news_agency": "강원도민일보",
       "origin_address": "http://www.kado.net/news/articleView.html?idxno=1181146",
+<<<<<<<< HEAD:WordSightProject/wordsight/news_data_test.json
       "tag": "부산,경남,지역,울산",
+========
+      "tag": "부산,울산,지역,경남",
+>>>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085:WordSightProject/wordsight/new_api/fixtures/news_data_test.json
       "created_date": "2023-05-02",
       "reporter": "전인수",
       "image_link": "https://www.bigkinds.or.kr/resources/images/01300101/2023/05/02/01300101.20230502131132001.01.jpg",
@@ -18,7 +22,11 @@
       "title": "\"이자 30% 드려요\" 투자금 21억 가로챈 폰지사기 여사장 '송치'",
       "news_agency": "머니투데이",
       "origin_address": "http://news.moneytoday.co.kr/view/mtview.php?no=2023050211023475829&type=2",
+<<<<<<<< HEAD:WordSightProject/wordsight/news_data_test.json
       "tag": "부산,경남,지역,울산",
+========
+      "tag": "부산,울산,지역,경남",
+>>>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085:WordSightProject/wordsight/new_api/fixtures/news_data_test.json
       "created_date": "2023-05-02",
       "reporter": "홍효진|기자|",
       "image_link": "https://www.bigkinds.or.kr/resources/images/02100201/2023/05/02/02100201.20230502131115001.01.jpg",
@@ -31,7 +39,11 @@
       "title": "모텔 찾아가 \"얘는 미성년자야\"…성관계 유도 후 2억원 뜯은 일당들",
       "news_agency": "디지털타임스",
       "origin_address": "http://www.dt.co.kr/contents.html?article_no=2023050202109919613004&ref=jeadan",
+<<<<<<<< HEAD:WordSightProject/wordsight/news_data_test.json
       "tag": "부산,경남,지역,울산",
+========
+      "tag": "부산,울산,지역,경남",
+>>>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085:WordSightProject/wordsight/new_api/fixtures/news_data_test.json
       "created_date": "2023-05-02",
       "reporter": "김성준",
       "image_link": "https://www.bigkinds.or.kr/resources/images/07101201/2023/05/02/07101201.20230502131110001.01.jpg",

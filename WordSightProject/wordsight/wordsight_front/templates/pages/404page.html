@@ -1,8 +1,9 @@
-{% extends 'content.html' %}
+{% extends 'base.html' %}
 <!--404error-->
 
-{% block maincontent%}
-<section id="404error" class="w-full">
+{% block content%}
+{% include "partial/search.html" %}
+<section id="404error" class="w-full max-w-[1080px]">
     <div class="bg-white my-10 mx-2 rounded-2xl shadow-4xl py-16 px-10 grid grid-flow-row justify-items-center gap-2.5">
         <svg id="그룹_101" data-name="그룹 101" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
             <path id="패스_41" data-name="패스 41" d="M40.981,10.56A30.421,30.421,0,1,1,10.56,40.981,30.415,30.415,0,0,1,40.981,10.56Z" transform="translate(20.427 20.427)" fill="#2980ba"/>

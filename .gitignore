@@ -340,3 +340,4 @@ cython_debug/
 # django 가상환경
 .pyvenv.cfg
 WordSightProject/Scripts/
+wordsight.session.sql
