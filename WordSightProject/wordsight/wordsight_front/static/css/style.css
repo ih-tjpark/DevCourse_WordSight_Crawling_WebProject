@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 @import url("component/newsDisplay.css");
+@import url("component/tagCheckbox.css");
 body {
     font-size: 100%;
     margin: 0;
@@ -86,10 +87,10 @@ input:focus {
 }
 input[type="checkbox"]  {
     display: none;
-
 }
 img,
 video {
     max-width: 100%;
     height: auto;
 }
+

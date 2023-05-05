@@ -8,8 +8,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    <script src="https://cdn.tailwindcss.com"></script>    <script>
         (function(d) {
           var config = {
             kitId: 'zrj2esy',
@@ -57,10 +56,41 @@
             }
         }
     </script>
+    <script>
+        function showfilter(values) {   
+            fetch(`/getNews/values=${values}`)
+            .then(response => response.text())
+            .then(text => {
+                console.log(values);
+                document.querySelector('#news-display').innerHTML = text;
+            });
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('div[name="interest_tag_div"],div[name="agency_tag_div"]').forEach(element => {
+                element.onclick = function() {
+                    var selected = []
+                    document.querySelectorAll('input[name="interest_tag"], input[name="agency_tag"]').forEach(element => {
+                        if (element.checked) {
+                            selected.push(element.value);
+                        }
+                    });
+                    showfilter(selected.join(','));
+                }
+            })
+        });
+    </script>
 </head>
 <body>
     {% include "partial/header.html"%}
+    {% if request.path == "/"  %}
+        {% include "partial/intro.html" %}
+    {% endif %}
+    {% include "partial/search.html" %}
     {% block content%}
+        <section id="news-cards" class="w-full max-w-[1080px] flex flex-row my-10">
+            {%include "partial/newsDisplay.html"%}
+            {%include "partial/newsCardFilter.html"%}
+        </section>
     {% endblock%}
     {% include "partial/footer.html"%}
 </body>

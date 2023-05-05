@@ -1,6 +1,6 @@
 <a href="{% url "WORDSIGHT:detail" each.news_id %}" id="news-card" class="w-64 flex flex-col items-stretch gap-1.5 rounded-2xl bg-white py-5 px-5 mx-2 shadow-4xl">
-    <img class="inline rounded-[8px]" src={{each.image_link}} alt=""/>
+    <img class="inline rounded-[8px] h-[140px]" src={{each.image_link}} alt=""/>
     <div class="text-base font-semibold">{{ each.title|default:"제목" }}</div>
     <div class="text-xs">{{ each.news_agency|default:"언론사" }} | {{ each.reporter|default:"기자" }}</div>
-    <p class="text-xs" style="display: -webkit-box;overflow: hidden;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{ each.news_content|default:"내용" }}</p>
+    <p class="text-xs" style="display: -webkit-box;overflow: hidden;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{ each.news_contents|default:"내용" }}</p>
 </a>

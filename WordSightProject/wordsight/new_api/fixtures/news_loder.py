@@ -15,6 +15,7 @@ def tag_reg(tag):
 new_list = []
 for news in news_list:
     new_data = {"model": "new_api.news"}
+    news_keyword_data = {"model": "new_api.news_keyword"}
     new_data["fields"] = {}
     new_data["fields"]["title"] = news["title"]
     new_data["fields"]["news_agency"] = news["news_agency"]
@@ -26,7 +27,6 @@ for news in news_list:
     new_data["fields"]["image_link"] = news["image"]
     new_data["fields"]["news_contents"] = news["news_contents"]
     new_data["fields"]['keyword_list'] = json.dumps(news['keyword'])
-
 
     new_list.append(new_data)
 

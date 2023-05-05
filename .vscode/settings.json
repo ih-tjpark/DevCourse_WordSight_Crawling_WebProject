@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 20000,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:DevCourse_WordSight_Crawling_WebProject}/WordSightProject/wordsight/db.sqlite3",
+            "name": "wordsight"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
