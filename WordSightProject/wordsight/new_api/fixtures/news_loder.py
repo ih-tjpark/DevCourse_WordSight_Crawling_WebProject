@@ -3,7 +3,7 @@ import re
 with open('crawling_data_real_final.json', 'r', encoding='UTF-8') as f:
     news_list = json.load(f)
 # print(news_list)
-
+jsonDec = json.decoder.JSONDecoder()
 def tag_reg(tag):
     tag = tag.replace(' ','')
     tag = tag.replace('>',' ')
@@ -25,6 +25,8 @@ for news in news_list:
     new_data["fields"]["reporter"] = news["reporter"]
     new_data["fields"]["image_link"] = news["image"]
     new_data["fields"]["news_contents"] = news["news_contents"]
+
+    new_data["fields"]['keyword_list'] = json.dumps(news['keyword'])
 
     new_list.append(new_data)
 

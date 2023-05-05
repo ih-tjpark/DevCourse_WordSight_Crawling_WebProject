@@ -1,6 +1,6 @@
 from django.db import models
 import uuid
-
+import json
     
 class Keyword(models.Model):
     keyword_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -23,12 +23,16 @@ class News(models.Model):
     region = models.CharField(max_length=200, null=True)
     people = models.CharField(max_length=200, null=True)
     company = models.CharField(max_length=200, null=True)
-    tag = models.ManyToManyField(Tag)             # 추후 결정
+    tag = models.ManyToManyField(Tag, related_name='related_tag')            # 추후 결정
     tag_list = models.TextField(null=True)
     news_contents = models.TextField()
     image_link = models.URLField()
     keyword_list = models.TextField(null=True)
     keyword = models.ManyToManyField(Keyword)
+    @property
+    def get_tag_list(self):
+        jsonDec = json.decoder.JSONDecoder()
+        return jsonDec.decode(self.tag_list)
 
 
 
