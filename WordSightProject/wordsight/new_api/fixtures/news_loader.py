@@ -1,12 +1,14 @@
 import json 
 import re
+
 from datetime import datetime
 
 with open('new_api/fixtures/crawling_data_real_final.json', 'r', encoding='UTF-8') as f:
-   news_list = json.load(f)
+    news_list = json.load(f)
+
+jsonDec = json.decoder.JSONDecoder()
 
 def tag_reg(tag):
-    tag = news["tag"]
     tag = tag.replace(' ','')
     tag = tag.replace('>',' ')
     tag = tag.replace('|',' ')

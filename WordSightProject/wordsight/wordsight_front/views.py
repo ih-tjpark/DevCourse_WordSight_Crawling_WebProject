@@ -1,10 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from functools import reduce
+from urllib.parse import urlparse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from new_api.models import News
 from rest_framework import generics
 from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
+import requests
 from new_api.serializers import NewsSerializer
 from rest_framework.pagination import PageNumberPagination
 
@@ -26,20 +29,24 @@ def index(request):
     news_list = NewsList.as_view()(request).data['results']
     page_obj = NewsList.as_view()(request).data['page_obj']
     context = {'news_list': news_list, 'page_obj': page_obj}
-    return render(request, "base.html", context)
 
-def home(request):
-    news = News.objects.all()[:12]
-    context = {'news': news}
-    return render(request, "pages/home.html", context)
+
 
 def detail(request, news_id):
     news = get_object_or_404(News, news_id=news_id)
     context = {'news': news}
     return render(request, "pages/detail.html", context)
 
-def updateNews(request, search_key):
-    rendered = render_to_string("partial/newsDisplay.html", {"news": News.objects.all()[:12]})
+def updateNews(request):
+    url = "http://127.0.0.1:8000/news_api/search/"
+    params = dict()
+    if request.GET.getlist('tags'):
+        params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
+    if request.GET.getlist('agencys'):
+        params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))
+    response = requests.get(url, params=params)
+    news_obj = response.json()["results"]
+    rendered = render_to_string("partial/newsDisplay.html", {"news": news_obj})
     return HttpResponse(rendered, content_type="text/plain")
 
 def error404view(request, exception=None):

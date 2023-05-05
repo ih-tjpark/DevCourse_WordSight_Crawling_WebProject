@@ -4,7 +4,7 @@ from rest_framework import serializers
 class NewsSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = ["news_id", "origin_address", "title", "created_date"]
+        fields = '__all__'
         
         
 class KeywordSerializer(serializers.ModelSerializer):

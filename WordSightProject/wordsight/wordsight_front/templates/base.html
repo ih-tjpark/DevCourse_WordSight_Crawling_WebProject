@@ -57,24 +57,29 @@
         }
     </script>
     <script>
-        function showfilter(values) {   
-            fetch(`/getNews/values=${values}`)
+        function showfilter(querydict) {   
+            fetch(`getNews/?tags=${querydict["tag"]}&agencys=${querydict["agency"]}`)
             .then(response => response.text())
             .then(text => {
-                console.log(values);
+                console.log(text);
                 document.querySelector('#news-display').innerHTML = text;
             });
         }
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('div[name="interest_tag_div"],div[name="agency_tag_div"]').forEach(element => {
                 element.onclick = function() {
-                    var selected = []
-                    document.querySelectorAll('input[name="interest_tag"], input[name="agency_tag"]').forEach(element => {
+                    var selected = {"tag":[], "agency":[]}
+                    document.querySelectorAll('input[name="interest_tag"]').forEach(element => {
                         if (element.checked) {
-                            selected.push(element.value);
+                            selected["tag"].push(element.value);
                         }
                     });
-                    showfilter(selected.join(','));
+                    document.querySelectorAll('input[name="agency_tag"]').forEach(element => {
+                        if (element.checked) {
+                            selected["agency"].push(element.value);
+                        }
+                    });
+                    showfilter(selected);
                 }
             })
         });
