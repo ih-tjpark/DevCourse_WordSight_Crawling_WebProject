@@ -19,11 +19,11 @@
             <div class="text-[28px] font-bold flex-auto">
                 {{news.title}}
             </div>
-            <a href="http://www.kado.net/news/articleView.html?idxno=1181146" target="blank" class="flex-auto py-2 px-4 mx-5 rounded-3xl border-solid border-[1px] border-gray-line hover:bg-gray-line active:bg-active-gray active:text-white active:border-active-gray">
-                원문보기
-            </a>
         </div>
-        <div class="flex divide-x divide-slate-600">
+        <a href={{news.origin_address}} target="blank" class="flex-auto py-2 px-4 rounded-3xl border-solid border-[1px] border-gray-line hover:bg-gray-line active:bg-active-gray active:text-white active:border-active-gray">
+            원문보기
+        </a>
+        <div class="flex flex-col md:flex-row md:divide-x md:divide-slate-600">
             <div class="text-base font-regular flex-auto px-2.5">
                 {{news.created_date|date:"Y년 m월 d일"}}
             </div>
