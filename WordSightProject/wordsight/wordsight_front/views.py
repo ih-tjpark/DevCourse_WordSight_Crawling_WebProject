@@ -2,18 +2,31 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from new_api.models import News
+from rest_framework import generics
 from new_api.keyword_analysis import get_relation_keyword
-<<<<<<< HEAD
-
-=======
 from django.template.loader import render_to_string
-#from .forms import InterestTagWidget
-#from .models import TagInterest, TagAgency, TagChoices
->>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085
-# Create your views here.
+from new_api.serializers import NewsSerializer
+from rest_framework.pagination import PageNumberPagination
+
+
+class CustomPagination(PageNumberPagination):
+    page_size = 12
+    page_size_query_param = 'page_size'
+    max_page_size = 10000
+
+class NewsList(generics.ListAPIView):
+    queryset = News.objects.all().order_by('-created_date')
+    serializer_class = NewsSerializer
+    pagination_class = CustomPagination
+    def get(self, request, *args, **kwargs):
+        response = self.list(request, *args, **kwargs)
+        response.data['page_obj'] = self.paginator.page
+        return response
+
 def index(request):
-    news = News.objects.all()[:12]
-    context = {'news': news}
+    news_list = NewsList.as_view()(request).data['results']
+    page_obj = NewsList.as_view()(request).data['page_obj']
+    context = {'news_list': news_list, 'page_obj': page_obj}
     return render(request, "base.html", context)
 
 def home(request):
@@ -38,13 +51,9 @@ def search(request):
         keyword = request.GET.get('q')
         if keyword:
             relation_keyword = get_relation_keyword(keyword)
-<<<<<<< HEAD
-            return render(request, "pages/insight.html", {"keyword": keyword, "relation_keyword":relation_keyword})
-=======
             if relation_keyword:
                 return render(request, "pages/insight.html", {"keyword": keyword, "relation_keyword":relation_keyword})
             else:
                 return render(request, "pages/emptyWord.html")
->>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085
         else:
             return render(request, "pages/home.html")

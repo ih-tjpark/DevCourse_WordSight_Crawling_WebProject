@@ -12,13 +12,9 @@ class KeywordSerializer(serializers.ModelSerializer):
         model = Keyword
         fields = '__all__'
 
-<<<<<<< HEAD
-
-
-=======
 # class NewsKeywordSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = News_Keyword
 #         fields = '__all__'
         
->>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085
+

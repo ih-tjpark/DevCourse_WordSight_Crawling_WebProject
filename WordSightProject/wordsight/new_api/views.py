@@ -4,24 +4,34 @@ from .serializers import *
 from .paginators import *
 from rest_framework import generics, filters
 from rest_framework.response import Response
-
+import django_filters 
+from django_filters import rest_framework as filters 
 from rest_framework.pagination import PageNumberPagination
 
-class CustomPagination(PageNumberPagination):
-    page_size = 9   
-    page_size_query_param = 'page_size'
-    max_page_size = 100
-    page_query_param = 'page'
+# class CustomPagination(PageNumberPagination):
+#     page_size = 12 # 한 페이지에 보여질 개수
+#     page_query_param = 'page' # 페이지 번호를 지정할 수 있는 query parameter 이름
+#     page_size_query_param = 'page_size' # 한 페이지에 보여질 개수를 지정할 수 있는 query parameter 이름
+#     max_page_size = 5000 # 최대 페이지 개수
 
-from rest_framework.renderers import TemplateHTMLRenderer
-import django_filters
-from django_filters import rest_framework as filters 
 
-# Home:뉴스 목록 9개씩 보여주는 역할 - GET
+#
 class NewsList(generics.ListAPIView):
     queryset = News.objects.all().order_by('-created_date')
     serializer_class = NewsSerializer
-    pagination_class = CustomPagination
+    # pagination_class = CustomPagination
+    # template_name = 'newsDisplay.html'
+    
+    # def get(self, request, *args, **kwargs):
+    #     queyset = self.filter_queryset(self.get_queryset())
+    #     page = self.paginate_queryset(queyset)
+        
+    #     if page is None:
+    #         serializer = self.get_serializer(page, many=True)
+    #         return self.get_paginated_response(serializer)
+    #     serializer = self.get_serializer(queyset, many=True)
+    #     return Response(serializer.data)
+
 
 class MultiValueCharFilter(filters.BaseCSVFilter, filters.CharFilter):
     def filter(self, qs, value):
@@ -32,6 +42,7 @@ class MultiValueCharFilter(filters.BaseCSVFilter, filters.CharFilter):
             qs = super(MultiValueCharFilter, self).filter(qs, value)
 
         return qs
+
 class InterestTagFilter(django_filters.FilterSet):
     interest__contains = MultiValueCharFilter(name='tag', lookup_expr='contains')
     class Meta:

@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     "wordsight_front",
     'mathfilters',
-    'django_filters'
+    'django_filters',
+
 ]
 
 REST_FRAMEWORK = {
