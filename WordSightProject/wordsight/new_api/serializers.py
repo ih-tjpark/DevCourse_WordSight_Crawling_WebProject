@@ -17,3 +17,4 @@ class KeywordSerializer(serializers.ModelSerializer):
 #         model = News_Keyword
 #         fields = '__all__'
         
+
