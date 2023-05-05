@@ -19,7 +19,7 @@ for news in news_list:
     new_data["fields"]["title"] = news["title"]
     new_data["fields"]["news_agency"] = news["news_agency"]
     new_data["fields"]["origin_address"] = news["origin_url"]
-    new_data["fields"]["tag_list"] = json.dumps(tag)
+    new_data["fields"]["tag_list"] = json.dumps(tag_reg(news['tag']))
     new_data["fields"]["created_date"] = news["created_date"]
     # 이름, 이름1,이름2,이름3, 이름~~@.com, JTV 등등 유형이 다양함 ->      
     new_data["fields"]["reporter"] = news["reporter"]
