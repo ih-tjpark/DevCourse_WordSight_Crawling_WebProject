@@ -29,7 +29,9 @@ for news in news_list:
     new_data["fields"]["image_link"] = news["image"]
     new_data["fields"]["news_contents"] = news["news_contents"]
     new_data["fields"]['keyword_list'] = json.dumps(news['keyword'])
+
     new_list.append(new_data)
+
 
 with open('news_data_result.json', 'w', encoding='UTF-8') as f:
     json.dump(new_list, f, ensure_ascii=False, indent=2)

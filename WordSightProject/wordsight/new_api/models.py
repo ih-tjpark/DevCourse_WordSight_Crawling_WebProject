@@ -11,8 +11,9 @@ class Keyword(models.Model):
 
 class Tag(models.Model):
     tag_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    class1 = models.CharField(max_length=20)   
-    class2 = models.CharField(max_length=20)
+    class1 = models.CharField(max_length=20,null=True)
+    class2 = models.CharField(max_length=20, null=True)
+
 
 class News(models.Model):
     news_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -31,9 +32,8 @@ class News(models.Model):
     keyword_list = models.TextField(null=True)
     keyword = models.ManyToManyField(Keyword)
 
+
     @property
     def get_tag_list(self):
         jsonDec = json.decoder.JSONDecoder()
         return jsonDec.decode(self.tag_list)
-
-
