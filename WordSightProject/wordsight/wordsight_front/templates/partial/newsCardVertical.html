@@ -1,8 +1,10 @@
 <a href="{% url "WORDSIGHT:detail" each.news_id %}"
 id="news-card-vertical" 
 class="w-full grid auto-cols-fr rounded-2xl gap-x-2.5 gap-y-1.5 bg-white py-5 px-5">
-    <div class="flex w-[200px] bg-slate-500 rounded-[8px] col-start-1 row-span-3 row-start-1"></div>
-    <div class="text-base font-semibold col-start-2 col-span-2 row-start-1">{{ each.title|default:"제목" }}</div>
-    <div class="text-xs col-start-2 col-span-2 row-start-2">{{ each.news_agency|default:"언론사" }} | {{ each.reporter|default:"기자" }}</div>
-    <p class="h-10 truncate text-xs col-start-2 col-span-2 row-start-3">{{ each.news_contents|default:"내용" }}</p>
+    <img class="inline rounded-[8px] w-[240px] col-start-1 row-start-1 row-span-3" src={{each.image_link}} alt=""/>
+    <div class="col-start-2 row-start-1 row-span-3">
+    <div class="text-base font-semibold ">{{ each.title|default:"제목" }}</div>
+    <div class="text-xs ">{{ each.news_agency|default:"언론사" }} | {{ each.reporter|default:"기자" }}</div>
+    <p class="h-10 truncate text-xs">{{ each.news_contents|default:"내용" }}</p>
+    </div>
 </a>
