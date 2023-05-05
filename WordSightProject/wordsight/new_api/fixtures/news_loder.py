@@ -5,7 +5,6 @@ with open('crawling_data_real_final.json', 'r', encoding='UTF-8') as f:
 # print(news_list)
 
 def tag_reg(tag):
-    tag = news["tag"]
     tag = tag.replace(' ','')
     tag = tag.replace('>',' ')
     tag = tag.replace('|',' ')
