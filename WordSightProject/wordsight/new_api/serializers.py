@@ -13,4 +13,4 @@ class KeywordSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-        
+
