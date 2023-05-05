@@ -8,7 +8,6 @@ from django.template.loader import render_to_string
 from new_api.serializers import NewsSerializer
 from rest_framework.pagination import PageNumberPagination
 
-
 class CustomPagination(PageNumberPagination):
     page_size = 12
     page_size_query_param = 'page_size'

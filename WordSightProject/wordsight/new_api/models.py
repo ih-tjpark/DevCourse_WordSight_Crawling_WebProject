@@ -9,7 +9,7 @@ class Keyword(models.Model):
 
 class Tag(models.Model):
     tag_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    class1 = models.CharField(max_length=20)
+    class1 = models.CharField(max_length=20)   
     class2 = models.CharField(max_length=20)
 
 class News(models.Model):
