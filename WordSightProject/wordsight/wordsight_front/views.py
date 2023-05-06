@@ -10,7 +10,7 @@ from new_api.views import NewsList
 from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
 from new_api.filters import NewsFilter
-
+from django.core.exceptions import ObjectDoesNotExist
 
 def index(request):
     news_list = NewsList.as_view()(request).data['results']
@@ -73,11 +73,11 @@ def search(request):
                         "news":news, 
                         'trend_keyword':trend_keyword, 
                         "related_tag":related_tag[:5],
-                         "date_graph":date_graph 
+                        "date_graph":date_graph 
                 }
-            if relation_keyword:
-                return render(request, "pages/insight.html", context)
-            else:
+                if relation_keyword:
+                    return render(request, "pages/insight.html", context)
+            except ObjectDoesNotExist:
                 return render(request, "pages/emptyWord.html")
         else:
             return render(request, "base.html")
