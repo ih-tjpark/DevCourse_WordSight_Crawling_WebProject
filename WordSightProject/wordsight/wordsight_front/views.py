@@ -37,6 +37,7 @@ def updateNews(request):
         params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
 
     if request.GET.getlist('agencys'):
+<<<<<<< HEAD
         params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))      
     
     test = NewsFilter(params['tags'], params['agencys'])
@@ -49,6 +50,20 @@ def updateNews(request):
         
     
     rendered = render_to_string("partial/newsDisplay.html", {"news_list": news_obj})
+=======
+        params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))
+    response = requests.get(url, params=params)
+    news_obj = response.json()["results"]
+
+    tag_list = params['tags'].split(',')
+    tag = Tag.objects.filter(class1=tag_list[0])
+    #print(params['tags'].split(','))
+    print(tag[0].news_set.all())
+    #news_obj = tag
+    news_obj = tag[0].news_set.all()
+    
+    rendered = render_to_string("partial/newsDisplay.html", {"news": news_obj})
+>>>>>>> main
     return HttpResponse(rendered, content_type="text/plain")
 
 def error404view(request, exception=None):
@@ -56,17 +71,23 @@ def error404view(request, exception=None):
 
 def search(request):
     if request.method == "GET":
+
         keyword = request.GET.get('q')
+
         if keyword:
             relation_keyword = get_relation_keyword(keyword)
             keyword = Keyword.objects.get(name=keyword)
             news = keyword.news_set.all()
             trend_keyword = Keyword.objects.all().order_by('-count')[:10]
+<<<<<<< HEAD
             tag= Tag.objects.none()
             for n in news:
                 tag = tag | n.tag.all()
 
             context= {"keyword": keyword, "relation_keyword":relation_keyword, "news":news, 'trend_keyword':trend_keyword, 'tag':tag }
+=======
+            context= {"keyword": keyword, "relation_keyword":relation_keyword, "news":news, 'trend_keyword':trend_keyword }
+>>>>>>> main
 
             if relation_keyword:
                 return render(request, "pages/insight.html", context)
