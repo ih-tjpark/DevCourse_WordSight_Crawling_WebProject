@@ -1,6 +1,6 @@
 <section id="news-display" class="w-full grid auto-rows-auto justify-items-center">
     <!--카드형 뉴스 격자식으로 디스플레이, 뉴스 필터 기능-->
-    <div class="w-full max-x-[800px] flex justify-between">
+    <div class="w-full flex justify-between">
         <div id="news-card-wrap" class="w-full grid gap-5">
             <!--뉴스카드 반복문 (기능 생성 후 수정)-->
             {%for each in news_list %}
@@ -8,44 +8,49 @@
             {% endfor %}
         </div>
     </div>
-
+    {% block pagenation %}
+    <!--page_obj를 이용하여 페이지네이션 구현-->
+    <div class="pagination w-full my-5">
+        <span class="step-links w-full flex justify-center items-stretch">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="select_button flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16.004" viewBox="0 0 20 16.004">
+                        <path id="패스_23" data-name="패스 23" d="M26.75,16.856H11.925l4.538-4.983a1.077,1.077,0,0,0-.163-1.612,1.332,1.332,0,0,0-1.762.149l-6.25,6.858a1.342,1.342,0,0,0-.113.171c0,.057,0,.091-.087.149A1.038,1.038,0,0,0,8,18H8a1.038,1.038,0,0,0,.087.411c0,.057,0,.091.087.149a1.342,1.342,0,0,0,.113.171l6.25,6.858A1.3,1.3,0,0,0,15.5,26a1.317,1.317,0,0,0,.8-.263,1.126,1.126,0,0,0,.45-.777,1.1,1.1,0,0,0-.287-.834l-4.538-4.983H26.75a1.148,1.148,0,1,0,0-2.286Z" transform="translate(-8 -9.996)" fill="#231f20"/>
+                    </svg>
+                </a>
+            {% endif %}
+                <a href="?page=1" class="select_button">
+                    1...
+                </a>
+                <span class="current-page select_button">
+                    {{ page_obj.number }}
+                </span>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="select_button">
+                    ...{{ page_obj.paginator.num_pages }}
+                </a>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="select_button flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16.004" viewBox="0 0 20 16.004">
+                        <path id="패스_26" data-name="패스 26" d="M9.25,19.144H24.075l-4.538,4.983a1.077,1.077,0,0,0,.163,1.612,1.332,1.332,0,0,0,1.763-.149l6.25-6.858a1.342,1.342,0,0,0,.112-.171c0-.057.063-.091.087-.149A1.038,1.038,0,0,0,28,18h0a1.038,1.038,0,0,0-.087-.411c0-.057-.063-.091-.087-.149a1.342,1.342,0,0,0-.112-.171l-6.25-6.858A1.3,1.3,0,0,0,20.5,10a1.317,1.317,0,0,0-.8.263,1.126,1.126,0,0,0-.45.777,1.1,1.1,0,0,0,.287.834l4.538,4.983H9.25a1.148,1.148,0,1,0,0,2.286Z" transform="translate(-8 -10)" fill="#231f20"/>
+                    </svg>
+                </a>
+                
+            {% endif %}
+        </span>
+      </div>
+<!--다혜님 버튼 구현 코드 
     <div id="pagenation-button" class="pagnation w-full flex justify-center">
-        {% comment %} <a href="?page={{ page_obj.previous_page_number }}"> {% endcomment %}
+        <a href=?page=>
         <a class="select_button flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16.004" viewBox="0 0 20 16.004">
-                <path id="패스_23" data-name="패스 23" d="M26.75,16.856H11.925l4.538-4.983a1.077,1.077,0,0,0-.163-1.612,1.332,1.332,0,0,0-1.762.149l-6.25,6.858a1.342,1.342,0,0,0-.113.171c0,.057,0,.091-.087.149A1.038,1.038,0,0,0,8,18H8a1.038,1.038,0,0,0,.087.411c0,.057,0,.091.087.149a1.342,1.342,0,0,0,.113.171l6.25,6.858A1.3,1.3,0,0,0,15.5,26a1.317,1.317,0,0,0,.8-.263,1.126,1.126,0,0,0,.45-.777,1.1,1.1,0,0,0-.287-.834l-4.538-4.983H26.75a1.148,1.148,0,1,0,0-2.286Z" transform="translate(-8 -9.996)" fill="#9e9e9e"/>
-            </svg>
+            
         </a>
         </a>
         <div class="select_button text-base flex items-center">
             {{ page_obj.number }}
         </div>
         <a class="select_button flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16.004" viewBox="0 0 20 16.004">
-                <path id="패스_26" data-name="패스 26" d="M9.25,19.144H24.075l-4.538,4.983a1.077,1.077,0,0,0,.163,1.612,1.332,1.332,0,0,0,1.763-.149l6.25-6.858a1.342,1.342,0,0,0,.112-.171c0-.057.063-.091.087-.149A1.038,1.038,0,0,0,28,18h0a1.038,1.038,0,0,0-.087-.411c0-.057-.063-.091-.087-.149a1.342,1.342,0,0,0-.112-.171l-6.25-6.858A1.3,1.3,0,0,0,20.5,10a1.317,1.317,0,0,0-.8.263,1.126,1.126,0,0,0-.45.777,1.1,1.1,0,0,0,.287.834l4.538,4.983H9.25a1.148,1.148,0,1,0,0,2.286Z" transform="translate(-8 -10)" fill="#231f20"/>
-            </svg>
+            
         </a>
-    </div> 
+    </div> -->
+    {% endblock %}
 </section>
-
-    {% comment %} {% block pagenation %}
-    <!--page_obj를 이용하여 페이지네이션 구현-->
-    <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-      
-            <span class="current-page">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-      
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-      </div>
-
-    {% endblock %} {% endcomment %}

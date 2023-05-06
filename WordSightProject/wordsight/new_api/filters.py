@@ -22,16 +22,17 @@ class TagFilter(django_filters.FilterSet):
 
 class WordFilter(filters.BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
-        tags = request.query_params.getlist('tags', [""])[0]
+        tags = request.query_params.get('tags', "")
         agencys = request.query_params.getlist('agencys', [""])[0]
         news_filter = Q()
         if tags:
             for tag in tags.split(','):
-                news_filter &= Q(tag_list__contains=tag)
+                news_filter |= Q(tag_list__contains=tag)
         if agencys:
             for agency in agencys.split(','):
                 news_filter |= Q(news_agency=agency)
         queryset = queryset.filter(news_filter)
+        print(queryset)
         return queryset
 
     def filter_instance(self, instance):

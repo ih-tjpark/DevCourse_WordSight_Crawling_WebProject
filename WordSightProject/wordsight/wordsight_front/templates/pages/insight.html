@@ -6,8 +6,19 @@
     <div class="mx-2.5 flex my-10 justify-between gap-2.5">
         <div class="insight-main w-3/4 bg-white p-8 grid rounded-2xl shadow-4xl gap-5">
             <div class="text-2xl font-bold">
-                <!--param check-->
-                {{ keyword.name }} 단어는 최근 {{ keyword.count|default:0 }}번 언급되었습니다.
+                "{{ keyword.name }}" 단어는 최근 <b>{{ keyword.count|default:0 }}</b>번 언급되었습니다.
+            </div>
+            <div>
+                <div class="text-xl font-semibold mb-2">
+                    날짜별 언급량
+                </div>
+            {% for k, v in date_graph%}
+                <div class="flex flex-row gap-5 items-center">
+                    <div class="text-base my-0.5 min-w-[55px]">{{k}}</div>
+                    <div class="w-[{{v}}%] h-[12px] bg-green rounded-2xl">
+                    </div>
+                </div>
+            {% endfor %}
             </div>
             <div class="text-xl font-semibold">
                 관련분야
@@ -23,30 +34,21 @@
             <div class="text-xl font-semibold">
                 관련뉴스
                 <br>
-                {%for i in news %}
-                    <a href="{% url "WORDSIGHT:detail" i.news_id %}" id="news-card" class="w-64 flex flex-col items-stretch gap-1.5 rounded-2xl bg-white py-5 px-5 mx-2 shadow-4xl">
-                        <img class="inline rounded-[8px] h-[140px]" src={{i.image_link}} alt=""/>
-                        <div class="text-base font-semibold">{{ i.title|default:"제목" }}</div>
-                        <div class="text-xs">{{ i.news_agency|default:"언론사" }} | {{ i.reporter|default:"기자" }}</div>
-                        <p class="text-xs" style="display: -webkit-box;overflow: hidden;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">{{ i.news_contents|default:"내용" }}</p>
-                    </a>
+                {%for each in news %}
+                    {% include "partial/newsCardVertical.html" with news=each %}
                 {%endfor%}
             </div>
-            <!--관련뉴스 필터링 쿼리 오브젝트 가져오기-->
-            <!--{% for each in news_query %}
-                {% include "partial/newsCardVertical.html" with news=each %}
-            {% endfor %}
-            -->
         </div>
-        <div class="insight-wordcloud w-1/4 flex flex-col rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
+        <div class="insight-wordcloud w-1/4 gap-2 flex flex-col rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
             <div class="text-xl font-semibold mb-1.5">
                 주요 관련 단어
             </div>
             <!--관련단어 및 점수 리스트 object 가져오기-->
             {% for key, value in relation_keyword.items %}
-
                 <a href="{% url "WORDSIGHT:search" %}?q={{key}}" 
-                class="text-[{{value|mul:100|mod:90|mul:4}}px] text-point{{forloop.counter}} font-semibold">
+                style="font-size:{{40|mul:value}}px"
+                class="text-xl text-point{{forloop.counter}} font-semibold" 
+                name="relate-word">
                     {{key}}
                 </a>
             {% endfor %}
