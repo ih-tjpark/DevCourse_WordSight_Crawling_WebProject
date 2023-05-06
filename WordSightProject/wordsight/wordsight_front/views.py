@@ -1,46 +1,28 @@
 from datetime import datetime
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
-from new_api.models import News, Keyword, Tag
+from functools import reduce
+from urllib.parse import urlparse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse
 from new_api.models import News, Keyword, Tag
 from new_api.views import NewsList
 from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
-<<<<<<< HEAD
 from new_api.filters import NewsFilter
-# from rest_framework import generics
-# import requests
-# from new_api.serializers import NewsSerializer
-# from rest_framework.pagination import PageNumberPagination
-# from django.db.models import Q,QuerySet
-=======
-import requests
-from new_api.serializers import NewsSerializer
-from rest_framework.pagination import PageNumberPagination
-from django.core.exceptions import ObjectDoesNotExist
->>>>>>> main
+
 
 def index(request):
     news_list = NewsList.as_view()(request).data['results']
     page_obj = NewsList.as_view()(request).data['page_obj']
     trend_keyword = Keyword.objects.all().order_by('-count')[:10]
     context = {'news_list': news_list, 'page_obj': page_obj, 'trend_keyword': trend_keyword }
-
-    trend_keyword = Keyword.objects.all().order_by('-count')[:10]
-    context = {'news_list': news_list, 'page_obj': page_obj, 'trend_keyword': trend_keyword }
-
     return render(request, "base.html", context)
 
 def detail(request, news_id):
-    trend_keyword = Keyword.objects.all().order_by('-count')[:10]
     news = get_object_or_404(News, news_id=news_id)
-<<<<<<< HEAD
     tag = news.tag.all()
     trend_keyword = Keyword.objects.all().order_by('-count')[:10]
     context = {'news': news, 'tag': tag, 'trend_keyword': trend_keyword}
-=======
-    context = {'news': news, "trend_keyword": trend_keyword}
->>>>>>> main
     return render(request, "pages/detail.html", context)
 
 def updateNews(request):
@@ -50,17 +32,8 @@ def updateNews(request):
     if request.GET.getlist('tags'):
         params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
 
-<<<<<<< HEAD
     if request.GET.getlist('agencys'):
         params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))      
-=======
-    tag_list = params['tags'].split(',')
-    tag = Tag.objects.filter(class1=tag_list[0])
-    #print(params['tags'].split(','))
-    #print(tag[0].news_set.all())
-    #news_obj = tag
-    #news_obj = tag[0].news_set.all()
->>>>>>> main
     
     test = NewsFilter(params['tags'], params['agencys'])
     news_obj=test.get_news()
@@ -76,23 +49,6 @@ def error404view(request, exception=None):
 
 def search(request):
     if request.method == "GET":
-<<<<<<< HEAD
-        keyword = request.GET.get('q')
-        if keyword:
-            relation_keyword = get_relation_keyword(keyword)
-            keyword = Keyword.objects.get(name=keyword)
-            news = keyword.news_set.all()
-            trend_keyword = Keyword.objects.all().order_by('-count')[:10]
-            tag= Tag.objects.none()
-            for n in news:
-                tag = tag | n.tag.all()
-
-            context= {"keyword": keyword, "relation_keyword":relation_keyword, "news":news, 'trend_keyword':trend_keyword, 'tag':tag }
-
-            if relation_keyword:
-                return render(request, "pages/insight.html", context)
-            else:
-=======
         search_key = request.GET.get('q')
         if search_key:
             try:
@@ -100,10 +56,10 @@ def search(request):
                 relation_keyword = get_relation_keyword(search_key)
                 news = keyword.news_set.all()[:5]
                 trend_keyword = Keyword.objects.all().order_by('-count')[:10]
-                related_tag =[]
-                for each_news in news:
-                    related_tag.extend(each_news.tag.all().values_list('class1', flat=True))
-                related_tag = list(set(related_tag))[:5]
+                related_tag= Tag.objects.none()
+                for n in news:
+                    related_tag = related_tag | n.tag.all()
+
                 date_graph = dict()
                 for word in list(keyword.in_date.strip("[]").split(", ")):
                     word = word.strip("\"")
@@ -115,14 +71,13 @@ def search(request):
                         "relation_keyword":relation_keyword,
                         "news":news, 
                         'trend_keyword':trend_keyword, 
-                        "related_tag":related_tag,
+                        "related_tag":related_tag[:5],
                          "date_graph":date_graph 
                 }
 
                 if relation_keyword:
                     return render(request, "pages/insight.html", context)
             except ObjectDoesNotExist:
->>>>>>> main
                 return render(request, "pages/emptyWord.html")
         else:
             return render(request, "base.html")
