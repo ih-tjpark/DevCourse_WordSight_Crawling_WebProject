@@ -1,8 +1,6 @@
-from functools import reduce
-from urllib.parse import urlparse
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render, get_object_or_404
-from django.urls import reverse
+from datetime import datetime
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 from new_api.models import News, Keyword, Tag
 from new_api.models import News, Keyword, Tag
 from new_api.views import NewsList
@@ -27,6 +25,7 @@ def index(request):
     return render(request, "base.html", context)
 
 def detail(request, news_id):
+    trend_keyword = Keyword.objects.all().order_by('-count')[:10]
     news = get_object_or_404(News, news_id=news_id)
     tag = news.tag.all()
     trend_keyword = Keyword.objects.all().order_by('-count')[:10]
@@ -39,6 +38,7 @@ def updateNews(request):
 
     if request.GET.getlist('tags'):
         params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
+
 
     if request.GET.getlist('agencys'):
         params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))      
@@ -75,3 +75,6 @@ def search(request):
                 return render(request, "pages/emptyWord.html")
         else:
             return render(request, "base.html")
+
+def page(request):
+    return HttpResponse("page")

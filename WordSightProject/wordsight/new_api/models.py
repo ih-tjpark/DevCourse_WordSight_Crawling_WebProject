@@ -30,5 +30,10 @@ class News(models.Model):
     image_link = models.URLField()
     keyword_list = models.TextField(null=True)
     keyword = models.ManyToManyField(Keyword)
+    # @property
+    # def get_tag_list(self):
+    #     jsonDec = json.decoder.JSONDecoder()
+    #     return jsonDec.decode(self.tag_list)
+
 
 

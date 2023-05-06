@@ -5,6 +5,7 @@ app_name = 'WORDSIGHT'
 
 urlpatterns = [
     path('',views.index, name="index"),
+    path("page/", views.page, name="page"),
     path("search/", views.search, name="search"),
     path("detail/", views.detail, name="detail"),
     path("getNews/", views.updateNews, name="getNews"),
