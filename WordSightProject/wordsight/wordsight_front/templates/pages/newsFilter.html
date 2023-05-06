@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <section id="news-cards" class="w-full max-w-[1080px] flex flex-row my-10">
+        {%include "partial/newsDisplay.html"%}
+        {%include "partial/newsCardFilter.html"%}
+    </section>
+{% endblock %}

@@ -1,9 +1,7 @@
 from datetime import datetime
-from functools import reduce
-from urllib.parse import urlparse
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import redirect, render, get_object_or_404
-from django.urls import reverse
+import json
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.shortcuts import render, get_object_or_404
 from new_api.models import News, Keyword, Tag
 from new_api.models import News, Keyword, Tag
 from new_api.views import NewsList
@@ -11,6 +9,9 @@ from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
 from new_api.filters import NewsFilter
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator
+from new_api.paginators import CustomPagination
+
 
 def index(request):
     news_list = NewsList.as_view()(request).data['results']
@@ -26,24 +27,24 @@ def detail(request, news_id):
     context = {'news': news, 'tag': tag, 'trend_keyword': trend_keyword}
     return render(request, "pages/detail.html", context)
 
-def updateNews(request):
-    url = "http://127.0.0.1:8000/news_api/search/"
-    params = dict()
+def updateNews(request, tag=None, agency=None):
+    params = dict().fromkeys(['tags', 'agencys'])
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        tags = data.get('tags', [])
+        agencys = data.get('agencys', [])
+        params={'tags': ",".join(tags), 'agencys': ",".join(agencys)}
+        test = NewsFilter(params['tags'], params['agencys'])
+        news_obj=test.get_news()
+        #print(news_obj)
+        paginator = Paginator(news_obj, 12)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        rendered = render_to_string("partial/newsDisplay.html", {"news_list": page_obj, "page_obj": page_obj})
 
-    if request.GET.getlist('tags'):
-        params["tags"] = params.get("tags", "") + ",".join(request.GET.getlist('tags'))
-
-    if request.GET.getlist('agencys'):
-        params["agencys"] = params.get("agencys", "") + ",".join(request.GET.getlist('agencys'))      
-    
-    test = NewsFilter(params['tags'], params['agencys'])
-    news_obj=test.get_news()
-
-    print(params)
-    #print(news_obj)
-
-    rendered = render_to_string("partial/newsDisplay.html", {"news_list": news_obj})
-    return HttpResponse(rendered, content_type="text/plain")
+        return HttpResponse(rendered)
+    else:
+        return HttpResponseBadRequest()
 
 def error404view(request, exception=None):
     return render(request, 'pages/404page.html')
@@ -83,4 +84,8 @@ def search(request):
             return render(request, "base.html")
 
 def page(request):
-    return HttpResponse("page")
+    news_list = NewsList.as_view()(request).data['results']
+    page_obj = NewsList.as_view()(request).data['page_obj']
+    trend_keyword = Keyword.objects.all().order_by('-count')[:10]
+    context = {'news_list': news_list, 'page_obj': page_obj, 'trend_keyword': trend_keyword }
+    return render(request, "newsFilter.html", context)

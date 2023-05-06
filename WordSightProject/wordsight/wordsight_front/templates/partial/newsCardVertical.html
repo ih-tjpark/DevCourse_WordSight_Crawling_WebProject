@@ -1,6 +1,6 @@
 <a href="{% url "WORDSIGHT:detail" each.news_id %}"
 id="news-card-vertical" 
-class="w-full grid grid-cols-[260px_minmax(0,1fr)] rounded-2xl gap-x-2.5 gap-y-1.5 bg-white py-5 px-5">
+class="w-full grid grid-cols-[260px_minmax(0,1fr)] rounded-2xl gap-x-2.5 gap-y-1.5 bg-white py-5 px-5 transition ease-in-out hover:scale-105 focus:scale-[1.01]">
     <img class="inline rounded-[8px] w-[240px] h-[140px] object-cover col-start-1 row-start-1 row-span-3" src={{each.image_link}} alt=""/>
     <div class="col-start-2 row-start-1 row-span-3">
     <div class="text-base font-semibold ">{{ each.title|default:"제목" }}</div>

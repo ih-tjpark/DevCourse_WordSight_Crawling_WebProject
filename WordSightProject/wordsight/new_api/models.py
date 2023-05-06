@@ -1,6 +1,5 @@
 from django.db import models
 import uuid
-
 import json
 
 class Keyword(models.Model):
