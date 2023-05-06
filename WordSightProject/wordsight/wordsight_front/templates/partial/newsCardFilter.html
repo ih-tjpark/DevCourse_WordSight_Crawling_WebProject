@@ -2,47 +2,68 @@
 {% load static %}
 <script src="{% static 'js/filtercheckbox.js' %}" defer>
 </script>
-<form class="news-filter border-box max-w-[280px] mx-2 h-fit flex flex-col divide-y rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
-    <div>
-        <h3 class="text-xl font-medium">분야 (8)</h3>
-        <div class="category-wrap h-fit my-2.5">
-            <div class="ck-button" id="interest_all" name="interest_tag_div">
-                <label>
-                    <input type="checkbox" id="" value="" name="interest_tag" class="" checked/>
-                    <span>전체</span>
-                </label>
-            </div>
-            {% with '정치 경제 사회 문화 국제 지역 스포츠 IT_과학' as arr %}
-            {%for tag in arr.split %}
-                <div class="ck-button" name="interest_tag_div">
+<div class="flex flex-col items-end gap-2.5 ">
+    <button id="filter-button" class="filter_button mx-2 bg-white p-2.5 rounded-2xl shadow-4xl transition ease-in-out hover:scale-105 focus:scale-105" >
+        <svg id="그룹_112" data-name="그룹 112" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <path id="패스_72" data-name="패스 72" d="M6,7.325A1.329,1.329,0,0,1,7.325,6h21.2a1.329,1.329,0,0,1,1.325,1.325v3.426a1.329,1.329,0,0,1-.391.941l-8.495,8.495a1.329,1.329,0,0,0-.391.941v3.426l-5.3,5.3V21.128a1.329,1.329,0,0,0-.391-.941L6.391,11.692A1.329,1.329,0,0,1,6,10.751Z" transform="translate(-1.927 -1.927)" fill="none" stroke="#757575" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+            <path id="패스_73" data-name="패스 73" d="M0,0H32V32H0Z" fill="none"/>
+          </svg>
+    </button>
+    <form method="get" action="{% url 'WORDSIGHT:getNews' %}" id="filter-form"
+        class="hidden absolute lg:flex lg:relative news-filter border-box min-w-[250px] max-w-[280px] mx-2 h-fit flex-col divide-y rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
+        <div class="mb-2.5">
+            {% with "정치 경제 사회 문화 국제 지역 스포츠 IT_과학" as arr%}
+            <h3 class="text-xl font-medium">분야 ({{arr.split|length}})</h3>
+            <div class="category-wrap h-fit my-2.5">
+                <div class="ck-button" id="interest_all" name="interest_tag_div">
                     <label>
-                        <input type="checkbox" id="" value={{tag}} name="interest_tag" class="" />
-                        <span>{{tag}}</span>
+                        <input type="checkbox" id="" value="" name="interest_tag" class="" checked/>
+                        <span>전체</span>
                     </label>
                 </div>
-            {% endfor %}
-            {% endwith %}
-        </div>
-    </div>
-    <div>
-        <h3 class="text-xl font-medium mt-2.5">언론사 (54) </h3>
-        <div class="category-wrap my-2.5">
-            <div class="ck-button" id="agency_all" name="agency_tag_div">
-                <label>
-                    <input type="checkbox" id="" value="" name="agency_tag" class="" checked/>
-                    <span>전체</span>
-                </label>
+                {%for tag in arr.split %}
+                    <a href={% url "WORDSIGHT:page" %} class="ck-button" name="interest_tag_div">
+                        <label>
+                            <input type="checkbox" id="" value={{tag}} name="interest_tag" class="" />
+                            <span>{{tag}}</span>
+                        </label>
+                    </a>
+                {% endfor %}
+                {% endwith %}
             </div>
-            {% with "경향신문 국민일보 내일신문 동아일보 문화일보 서울신문 세계일보 조선일보 중앙일보" as arr %}
-            {%for tag in arr.split %}
-                <div class="ck-button" name="agency_tag_div">
+        </div>
+        <div>
+            {% with "KBS MBC OBS SBS YTN 강원도민일보 강원일보 경기일보 경남도민일보 경인일보 경향신문 광주매일신문 광주일보 국민일보 국제신문 내일신문 대구일보 대전일보 동아일보 디지털타임스 매일경제 매일신문 머니투데이 머니투데이 무등일보 문화일보 부산일보 서울경제 서울신문 세계일보 아시아경제 아주경제 영남일보 울산매일 전북도민일보 전북일보 전자신문 조선일보 중도일보 중부매일 중부일보 중앙일보 충북일보 충청일보 충청투데이 파이낸셜뉴스 한겨레 한국경제 한국일보 한라일보 헤럴드경제" as arr %}
+            <h3 class="text-xl font-medium mt-2.5">언론사 ({{arr.split|length}}) </h3>
+            <div class="category-wrap my-2.5">
+                <div class="ck-button" id="agency_all" name="agency_tag_div">
                     <label>
-                        <input type="checkbox" id="" value={{tag}} name="agency_tag" class="" />
-                        <span>{{tag}}</span>
+                        <input type="checkbox" id="" value="" name="agency_tag" class="" checked/>
+                        <span>전체</span>
                     </label>
                 </div>
-            {% endfor %}
-            {% endwith %}
+                {%for tag in arr.split %}
+                    <div class="ck-button" name="agency_tag_div">
+                        <label>
+                            <input type="checkbox" id="" value={{tag}} name="agency_tag" class="" />
+                            <span>{{tag}}</span>
+                        </label>
+                    </div>
+                {% endfor %}
+                {% endwith %}
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
+<script>
+    window.onload = function() {
+        document.getElementById("filter-button").addEventListener("click", function() {
+            const container = document.getElementById("filter-form")
+            if (container.className.indexOf("hidden") == -1) {
+                container.className += " hidden";
+            } else {
+                container.className = container.className.replace(" hidden", "");
+            }
+        });
+    }
+</script>

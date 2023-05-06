@@ -65,7 +65,7 @@ class NewsFilter:
                 agency_list = self.agency.split(',')
                 news_agency = News.objects.none()
                 for agency in agency_list[::-1]:
-                    news_object_set = News.objects.filter(news_agency = agency)[:10]
+                    news_object_set = News.objects.filter(news_agency__contains = agency)[:10]
                     news_agency = news_agency | news_object_set
                 news = news_agency
                 print('agency실행')
