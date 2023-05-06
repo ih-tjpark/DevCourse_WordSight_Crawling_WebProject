@@ -1,6 +1,5 @@
 import json 
 import re
-
 from datetime import datetime
 
 with open('new_api/fixtures/crawling_data_real_final.json', 'r', encoding='UTF-8') as f:

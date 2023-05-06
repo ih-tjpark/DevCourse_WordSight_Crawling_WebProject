@@ -3,7 +3,7 @@
 {% block content%}
 <section id="news-detail" class="w-full max-w-[1080px]">
     <div class="bg-white my-10 mx-2.5 rounded-2xl shadow-4xl py-10 px-10 grid grid-flow-row justify-items-start gap-2.5">
-        <a href="../">
+        <a href="{{request.META.HTTP_REFERER|escape}}">
             <svg id="그룹_85" data-name="그룹 85" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
                 <g id="그룹_84" data-name="그룹 84" transform="translate(36) rotate(90)" opacity="0">
                   <path id="패스_19" data-name="패스 19" d="M0,0H36V36H0Z" fill="#fff"/>
@@ -33,9 +33,10 @@
         </div>
         <div class="flex">
             <!--관련 태그 리스트 가져오기-->
-            {% for i in "123"|make_list %}
-            <a class="py-0.5 px-2.5 rounded-lg bg-active-gray text-white m-1">
-                태그
+            {% for tag in news.tags.all %}
+            <a href="{% url 'tag_detail' tag.tag_id%}" class="py-0.5 px-2.5 rounded-lg bg-active-gray text-white m-1">
+                {{tag.class1}}
+                {{tag.class2}}
             </a>
             {% endfor %}
         </div>
@@ -43,7 +44,6 @@
         <p class="w-full break-words whitespace-break-spaces">
             {{news.news_contents}}
         </p>
-        <!--여기에 추가해주세요-->
     </div>
 </section>
 {% endblock%}
