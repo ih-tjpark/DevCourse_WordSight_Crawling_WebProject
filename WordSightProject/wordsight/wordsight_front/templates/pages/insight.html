@@ -14,9 +14,9 @@
             </div>
             <div class="flex flex-row">
                 <!--관련 태그 리스트 가져오기-->
-                {% for i in "123"|make_list %}
+                {% for i in tag %}
                     <a class="py-1 px-3 h-[30px] rounded-lg bg-active-gray text-white m-1">
-                        태그
+                        {{i.class1}}>{{i.class2}}
                     </a>
                 {% endfor %}
             </div>
@@ -44,15 +44,10 @@
             </div>
             <!--관련단어 및 점수 리스트 object 가져오기-->
             {% for key, value in relation_keyword.items %}
-<<<<<<< HEAD
-                <a href="{% url "WORDSIGHT:search" %}?q={{val}}" class="text-{{i}} font-semibold">
-                    {{key}} 
-                    {{value}}
-=======
+
                 <a href="{% url "WORDSIGHT:search" %}?q={{key}}" 
                 class="text-[{{value|mul:100|mod:90|mul:4}}px] text-point{{forloop.counter}} font-semibold">
                     {{key}}
->>>>>>> 0325a71cf69aa3e4b4613a8ca6af87c502172085
                 </a>
             {% endfor %}
         </div>

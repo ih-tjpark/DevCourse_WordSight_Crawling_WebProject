@@ -30,16 +30,5 @@ class News(models.Model):
     image_link = models.URLField()
     keyword_list = models.TextField(null=True)
     keyword = models.ManyToManyField(Keyword)
-    # @property
-    # def get_tag_list(self):
-    #     jsonDec = json.decoder.JSONDecoder()
-    #     return jsonDec.decode(self.tag_list)
-
-
-
-# class News_Keyword(models.Model):
-#     news_id = models.ForeignKey(News, on_delete=models.CASCADE, db_column="news_id")
-#     keyword_id = models.OneToOneField(Keyword, on_delete=models.CASCADE, db_column="keyword_id") # 여러 개 
-#     name = models.CharField(max_length=200)
 
 
