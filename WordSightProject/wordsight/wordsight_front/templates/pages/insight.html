@@ -2,6 +2,18 @@
 <!--키워드 분석페이지-->
 {% load mathfilters %}
 {% block content%}
+<style>
+    .graph-bar{
+        animation: progres 1.5s ease-in-out;
+    }
+    @keyframes progres{
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: var(--width);
+        }
+</style>
 <section id="keyword-insight" class="w-full max-w-[1080px]">
     <div class="mx-2.5 flex my-10 justify-between gap-2.5">
         <div class="insight-main w-3/4 bg-white p-8 grid rounded-2xl shadow-4xl gap-5">
@@ -13,12 +25,18 @@
                     날짜별 언급량
                 </div>
             {% for k, v in date_graph%}
-                <div class="flex flex-row gap-5 items-center">
-                    <div class="text-base my-0.5 min-w-[55px]">{{k}}</div>
-                    <div class="w-[{{v}}%] h-[12px] bg-green rounded-2xl">
+                <div class="flex flex-row gap-5 items-center indent-5">
+                    <div class="text-base my-0.5 min-w-[75px]">{{k}}</div>
+                    <div style="width:{{v}}%;" class="graph-bar h-[12px] bg-green rounded-2xl">
                     </div>
                 </div>
             {% endfor %}
+            <script>
+                const bar = document.querySelectorAll('.graph-bar');
+                bar.forEach((e)=>{
+                    e.style.setProperty('--width', e.style.width);
+                });
+            </script>
             </div>
             <div class="text-xl font-semibold">
                 관련분야
@@ -39,7 +57,7 @@
                 {%endfor%}
             </div>
         </div>
-        <div class="insight-wordcloud w-1/4 gap-2 flex flex-col rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
+        <div class="insight-wordcloud w-1/4 gap-2.5 flex flex-col rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
             <div class="text-xl font-semibold mb-1.5">
                 주요 관련 단어
             </div>
@@ -47,7 +65,7 @@
             {% for key, value in relation_keyword.items %}
                 <a href="{% url "WORDSIGHT:search" %}?q={{key}}" 
                 style="font-size:{{40|mul:value}}px"
-                class="text-xl text-point{{forloop.counter}} font-semibold" 
+                class="text-xl text-point{{forloop.counter}} font-semibold hover:translate-x-2 focus:translate-x-2 transition-all" 
                 name="relate-word">
                     {{key}}
                 </a>
