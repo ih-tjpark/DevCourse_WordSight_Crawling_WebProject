@@ -20,15 +20,17 @@
                 </div>
             {% endfor %}
             </div>
+            <div class="text-xl font-semibold">
+                관련분야
+            </div>
             <div class="flex flex-row">
                 <!--관련 태그 리스트 가져오기-->
-                {% for i in tag %}
-                    <a class="py-1 px-3 h-[30px] rounded-lg bg-slate-800 text-white m-1">
-                        {{i.class1}}>{{i.class2}}
+                {% for tag in related_tag %}
+                    <a class="py-1 px-3 h-[30px] rounded-lg bg-active-gray text-white m-1">
+                        {{tag.class1}}>{{tag.class2}}
                     </a>
                 {% endfor %}
             </div>
-            <!--관련뉴스 필터링 쿼리 오브젝트 가져오기-->
             <div class="text-xl font-semibold">
                 관련뉴스
                 <br>
