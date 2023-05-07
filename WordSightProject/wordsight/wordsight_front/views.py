@@ -3,7 +3,6 @@ import json
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from new_api.models import News, Keyword, Tag
-from new_api.models import News, Keyword, Tag
 from new_api.views import NewsList
 from new_api.keyword_analysis import get_relation_keyword
 from django.template.loader import render_to_string
