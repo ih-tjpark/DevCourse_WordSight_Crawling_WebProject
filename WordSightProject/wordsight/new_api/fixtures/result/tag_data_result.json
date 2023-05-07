@@ -44,20 +44,6 @@
   {
     "model": "new_api.tag",
     "fields": {
-      "class1": "스포츠",
-      "class2": "야구"
-    }
-  },
-  {
-    "model": "new_api.tag",
-    "fields": {
-      "class1": "스포츠",
-      "class2": "축구"
-    }
-  },
-  {
-    "model": "new_api.tag",
-    "fields": {
       "class1": "국제",
       "class2": "아시아"
     }
@@ -109,13 +95,6 @@
     "fields": {
       "class1": "정치",
       "class2": "외교"
-    }
-  },
-  {
-    "model": "new_api.tag",
-    "fields": {
-      "class1": "스포츠",
-      "class2": "축구"
     }
   },
   {
@@ -214,13 +193,6 @@
     "fields": {
       "class1": "스포츠",
       "class2": "골프"
-    }
-  },
-  {
-    "model": "new_api.tag",
-    "fields": {
-      "class1": "스포츠",
-      "class2": "야구"
     }
   },
   {
@@ -436,13 +408,6 @@
   {
     "model": "new_api.tag",
     "fields": {
-      "class1": "스포츠",
-      "class2": "축구"
-    }
-  },
-  {
-    "model": "new_api.tag",
-    "fields": {
       "class1": "사회",
       "class2": "미디어"
     }
@@ -536,13 +501,6 @@
     "fields": {
       "class1": "경제",
       "class2": "경제일반"
-    }
-  },
-  {
-    "model": "new_api.tag",
-    "fields": {
-      "class1": "스포츠",
-      "class2": "야구"
     }
   },
   {
