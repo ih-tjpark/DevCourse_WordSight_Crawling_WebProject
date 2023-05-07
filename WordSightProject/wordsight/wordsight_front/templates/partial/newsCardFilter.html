@@ -2,15 +2,22 @@
 {% load static %}
 <script src="{% static 'js/filtercheckbox.js' %}" defer>
 </script>
-<div class="flex flex-col items-end gap-2.5 ">
-    <button id="filter-button" class="filter_button mx-2 bg-white p-2.5 rounded-2xl shadow-4xl transition ease-in-out hover:scale-105 focus:scale-105" >
+<style>
+    @media (max-width: 1024px) {
+        #filter-form {
+            transition: all .2s ease-in-out;
+        }
+    }
+</style>
+<div class="order-first flex flex-col items-end gap-2.5 ">
+    <button id="filter-button" class="filter_button lg:hidden mx-2 bg-white p-2.5 rounded-2xl shadow-4xl transition ease-in-out hover:scale-105 focus:scale-105" >
         <svg id="그룹_112" data-name="그룹 112" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
             <path id="패스_72" data-name="패스 72" d="M6,7.325A1.329,1.329,0,0,1,7.325,6h21.2a1.329,1.329,0,0,1,1.325,1.325v3.426a1.329,1.329,0,0,1-.391.941l-8.495,8.495a1.329,1.329,0,0,0-.391.941v3.426l-5.3,5.3V21.128a1.329,1.329,0,0,0-.391-.941L6.391,11.692A1.329,1.329,0,0,1,6,10.751Z" transform="translate(-1.927 -1.927)" fill="none" stroke="#757575" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
             <path id="패스_73" data-name="패스 73" d="M0,0H32V32H0Z" fill="none"/>
         </svg>
     </button>
     <form method="get" action="{% url 'WORDSIGHT:getNews' %}" id="filter-form"
-        class="hidden absolute lg:flex lg:relative news-filter border-box min-w-[250px] max-w-[280px] mx-2 h-fit flex-col divide-y rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
+        class="max-lg:hidden absolute mt-16 flex  lg:relative lg:mt-0 news-filter border-box min-w-[250px] max-w-[280px] mx-2 h-fit flex-col divide-y rounded-2xl shadow-4xl bg-[#FAFAFA] p-5 divide-solid">
         <div class="mb-2.5">
             {% with "정치 경제 사회 문화 국제 지역 스포츠 IT_과학" as arr%}
             <h3 class="text-xl font-medium">분야 ({{arr.split|length}})</h3>
@@ -56,13 +63,13 @@
     </form>
 </div>
 <script>
-    window.onload = function() {
+    window.onload = function() {   
         document.getElementById("filter-button").addEventListener("click", function() {
             const container = document.getElementById("filter-form")
             if (container.className.indexOf("hidden") == -1) {
-                container.className += " hidden";
+                container.className = "hidden "+container.className;
             } else {
-                container.className = container.className.replace(" hidden", "");
+                container.className = container.className.replace("hidden ", "");
             }
         });
     }
