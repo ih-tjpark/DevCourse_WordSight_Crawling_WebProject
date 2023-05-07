@@ -1,4 +1,5 @@
 from datetime import datetime
+from collections import Counter
 import json
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -32,9 +33,7 @@ def updateNews(request, tag=None, agency=None):
         tags = data.get('tags', [])
         agencys = data.get('agencys', [])
         params={'tags': ",".join(tags), 'agencys': ",".join(agencys)}
-        test = NewsFilter(params['tags'], params['agencys'])
-        news_obj=test.get_news()
-        #print(news_obj)
+        news_obj=NewsFilter(params['tags'], params['agencys']).get_news()
         paginator = Paginator(news_obj, 12)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
@@ -54,11 +53,20 @@ def search(request):
             try:
                 keyword = Keyword.objects.get(name=search_key)
                 relation_keyword = get_relation_keyword(search_key)
-                news = keyword.news_set.all()[:5]
+                news = keyword.news_set.all().order_by('-created_date')[:100]
                 trend_keyword = Keyword.objects.all().order_by('-count')[:10]
-                related_tag= Tag.objects.none()
+
+                # 키워드관련 뉴스의 소분류 태그 카운트 후 상위 5개 가져오기 
+                tag_counter = Counter()
                 for n in news:
-                    related_tag = related_tag | n.tag.all()
+                    tags = n.tag.all()
+                    tag_counter += Counter([t.class2 for t in tags])
+                tag_most_common = [t for t,c in tag_counter.most_common()[:5]]
+                related_tag = Tag.objects.filter(class2__in=tag_most_common).exclude(class1='미분류')
+
+                paginator = Paginator(news, 12)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
 
                 date_graph = dict()
                 for word in list(keyword.in_date.strip("[]").split(", ")):
@@ -69,10 +77,11 @@ def search(request):
                                 x[1]*100//int(keyword.count)) for x in date_graph]
                 context= {"keyword": keyword, 
                         "relation_keyword":relation_keyword,
-                        "news":news, 
+                        "news":page_obj, 
                         'trend_keyword':trend_keyword, 
                         "related_tag":related_tag[:5],
-                        "date_graph":date_graph 
+                        "date_graph":date_graph,
+                        "page_obj": page_obj 
                 }
                 if relation_keyword:
                     return render(request, "pages/insight.html", context)
@@ -85,5 +94,5 @@ def page(request):
     news_list = NewsList.as_view()(request).data['results']
     page_obj = NewsList.as_view()(request).data['page_obj']
     trend_keyword = Keyword.objects.all().order_by('-count')[:10]
-    context = {'news_list': news_list, 'page_obj': page_obj, 'trend_keyword': trend_keyword }
+    context = {'news_list': page_obj, 'page_obj': page_obj, 'trend_keyword': trend_keyword }
     return render(request, "newsFilter.html", context)
