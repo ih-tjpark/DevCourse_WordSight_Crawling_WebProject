@@ -75,7 +75,7 @@ class NewsFilter:
                 news = news_tag & news_agency
         
         else:
-            news = News.objects.all()[:100]
+            news = News.objects.all().order_by('-created_date')[:100]
 
         return news
     
