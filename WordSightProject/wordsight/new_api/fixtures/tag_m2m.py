@@ -9,7 +9,9 @@ for i in newsAll:
     print(tagList)
     if tagList and tagList[0]!='미분류' :
         for j in range(0,len(tagList),2):
-            tag = Tag.objects.get(class1=tagList[j], class2=tagList[j+1]) 
+            print(tagList[j],tagList[j+1])
+            print(len(tagList))
+            tag = Tag.objects.get(class1=tagList[j], class2=tagList[j+1])
             i.tag.add(tag.tag_id)
     else:
         tag = Tag.objects.get(class1='미분류')
