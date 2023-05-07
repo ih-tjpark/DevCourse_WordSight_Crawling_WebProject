@@ -48,7 +48,7 @@ class NewsFilter:
 
     def get_news(self): 
         news = News.objects.none()
-
+        
         if self.tag or self.agency:
             if self.tag:
                 tag_list = self.tag.split(',')

@@ -35,13 +35,12 @@ def updateNews(request, tag=None, agency=None):
         agencys = data.get('agencys', [])
         params={'tags': ",".join(tags), 'agencys': ",".join(agencys)}
         test = NewsFilter(params['tags'], params['agencys'])
-        news_obj=test.get_news()
-        #print(news_obj)
+        news_obj = test.get_news()
+        # print(news_obj)
         paginator = Paginator(news_obj, 12)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-        rendered = render_to_string("partial/newsDisplay.html", {"news_list": page_obj, "page_obj": page_obj})
-
+        rendered = render_to_string("partial/newsDisplay.html", {"news_list": news_obj, "page_obj": page_obj})
         return HttpResponse(rendered)
     else:
         return HttpResponseBadRequest()
