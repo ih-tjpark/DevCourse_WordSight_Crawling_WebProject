@@ -18,6 +18,7 @@
           h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         tailwind.config = {
             content: [
@@ -58,32 +59,37 @@
         }
     </script>
     <script>
-        function showfilter(querydict) {   
-            fetch(`getNews/?tags=${querydict["tag"]}&agencys=${querydict["agency"]}`)
-            .then(response => response.text())
-            .then(text => {
-                console.log(`?tags=${querydict["tag"]}&agencys=${querydict["agency"]}`);
-                document.querySelector('#news-display').innerHTML = text;
-            })
-        }
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('div[name="interest_tag_div"],div[name="agency_tag_div"]').forEach(element => {
-                element.onclick = function() {
-                    var selected = {"tag":[], "agency":[]}
-                    document.querySelectorAll('input[name="interest_tag"]').forEach(element => {
-                        if (element.checked) {
-                            selected["tag"].push(element.value);
-                        }
-                    });
-                    document.querySelectorAll('input[name="agency_tag"]').forEach(element => {
-                        if (element.checked) {
-                            selected["agency"].push(element.value);
-                        }
-                    });
-                    showfilter(selected);
-                }
-            })
+        $(document).ready(function() {
+            const filterCheckboxes =document.querySelectorAll('input[name="interest_tag"]');
+            const filterCheckboxes2 =document.querySelectorAll('input[name="agency_tag"]');
+            const allcheckboxes = document.querySelectorAll('input[type="checkbox"]');
+            const newsDisplay = document.getElementById('news-display')
+            allcheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    console.log("changed");
+                // Get the selected checkbox values
+                    const selectedTags = Array.from(filterCheckboxes)
+                        .filter(checkbox => checkbox.checked)
+                        .map(checkbox => checkbox.value);
+                    const selectedAgency = Array.from(filterCheckboxes2)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+                // Send an AJAX request to update the news display
+                    fetch(`/getNews/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                        body: JSON.stringify({ tags: selectedTags, agencys: selectedAgency })
+                    })
+                    .then(response => response.text())
+                    .then(html => newsDisplay.innerHTML = html)
+                    .catch(error => console.error(error));
+                });
+            });
         });
+
     </script>
 </head>
 <body>

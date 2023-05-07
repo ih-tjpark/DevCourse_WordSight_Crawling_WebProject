@@ -13,9 +13,10 @@
 
     </input>
     <!--트렌트 키워드 리스트-->
-    <div class="w-full h-max mx-4 rounded-3xl pb-5">
+    <div class="relative flex flex-wrap h-max mx-4 rounded-3xl pb-5">
         {%for i in trend_keyword %}
-            <a href="{% url "WORDSIGHT:search" %}?q={{i.name}}"  class="bg-point{{forloop.counter}} min-w-fit py-2 px-5 mx-1 mt-1.5 rounded-4xl text-base text-white">
+            <a href="{% url "WORDSIGHT:search" %}?q={{i.name}}"  
+            class="bg-point{{forloop.counter}} shrink min-w-[80px] py-2 px-5 mx-1 mt-1.5 rounded-4xl text-base text-white transition ease-in-out hover:scale-110 focus:scale-110">
                 #{{i.name}}
             </a>
         {% endfor %}

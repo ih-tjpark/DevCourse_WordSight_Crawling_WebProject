@@ -2,6 +2,9 @@
     .welcome-intro-text {
         font-weight:900;
         font-size: 2rem;
+        animation: typing 2s steps(22), step-end alternate;
+        white-space: nowrap;
+        overflow: hidden;
     }
     .welcome-intro-eng {
         line-height:20px;
@@ -13,13 +16,28 @@
         align-items: center;
         justify-content: center;
     }
+    
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+            border-color: transparent;
+          }
+    }
+        
+    @keyframes blink {
+        50% {
+            border-color: transparent
+        }
+    }
 </style>
 <section id="welcome-intro" class="main-wrap w-full max-w-[1080px]">
     <div class="welcome-intro-eng decorate-text break-words ">
         GET YOUR WORD-SIGHT
     </div>
-    <div class="welcome-intro-text text-center break-words">
+    <div class="welcome-intro-text text-center break-keep">
         원하는 키워드를 입력하고 워드사이트를 확인하세요
     </div>
 </section>
-
