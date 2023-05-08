@@ -24,7 +24,6 @@ environ.Env.read_env()
 # Custom settings
 # deploy checklist
 SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
 CSRF_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
