@@ -13,16 +13,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 import mimetypes
-from environ import Env
-env=Env()
+import environ
 
 mimetypes.add_type("text/css", ".css", True)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-env_path = BASE_DIR / ".env"
-if env_path.exists():
-    with env_path.open("rt", encoding="utf8") as f:
-        env.read_env(f, overwrite=True)
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 # Custom settings
 # deploy checklist
 SESSION_COOKIE_SECURE = True
@@ -103,7 +101,14 @@ WSGI_APPLICATION = 'wordsight.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db()
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env("DB_NAME"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT"),
+    }
 }
 
 

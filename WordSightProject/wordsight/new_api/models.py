@@ -4,9 +4,9 @@ import json
 
 class Keyword(models.Model):
     keyword_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=200)
+    name = models.CharField()
     count = models.IntegerField()
-    in_date = models.CharField(max_length=200)
+    in_date = models.CharField()
 
 class Tag(models.Model):
     tag_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -18,8 +18,8 @@ class News(models.Model):
     origin_address = models.URLField()
     title = models.CharField(max_length=200)
     created_date = models.DateField()
-    news_agency = models.CharField(max_length=10)
-    reporter = models.CharField(max_length=20)
+    news_agency = models.CharField(max_length=100)
+    reporter = models.CharField(max_length=100)
     region = models.CharField(max_length=200, null=True)
     people = models.CharField(max_length=200, null=True)
     company = models.CharField(max_length=200, null=True)
