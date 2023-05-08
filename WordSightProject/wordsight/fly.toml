@@ -10,7 +10,7 @@ primary_region = "nrt"
   release_command = "python manage.py migrate"
 
 [env]
-  DATABASE_URL = "postgres://kangdaia:kXwYQS7zK0RI@ep-icy-mud-198032.ap-southeast-1.aws.neon.tech/neondb"
+  DATABASE_URL = ""
   DEBUG = "false"
   PORT = "8000"
   SECRET_KEY = "YOU-MAKE-ME-CRAZY-209UT@GAO(IJALN)-3zo*0(zuh2w@(@%h=_qrn3c1g_=-%l897^+txfpy4=qjl@koyc"
