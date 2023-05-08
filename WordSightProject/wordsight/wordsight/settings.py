@@ -25,12 +25,12 @@ if env_path.exists():
         env.read_env(f, overwrite=True)
 # Custom settings
 # deploy checklist
-#SESSION_COOKIE_SECURE = True
-#SECURE_SSL_REDIRECT = True
-#CSRF_COOKIE_SECURE = True
-#SECURE_HSTS_SECONDS = 3600
-#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#SECURE_HSTS_PRELOAD = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -41,7 +41,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.fly.dev']
 CSRF_TRUSTED_ORIGINS = ['https://wordsight.fly.dev']
 # Application definition
 
@@ -143,6 +143,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
