@@ -12,13 +12,16 @@
 
 ## 2️⃣ 프로젝트 결과물 
 #### 📍메인 화면
-![Mainpage](https://github.com/joyunji/Java_study/assets/49296139/da4454f4-1594-4fd8-b598-08a25472b771)
+<img width="800" alt="메인" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/19382948-2ae8-4d30-a8e5-6c738554f7bb">
+
 
 #### 📍뉴스 상세화면
-![image (2)](https://github.com/joyunji/Java_study/assets/49296139/c805898a-3227-4098-8d65-706231cdf75b)
+<img width="800" alt="뉴스 상세" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/7d45b63e-8fca-4fea-8b91-400f603e55e0">
+
 
 #### 📍분석 화면
-![image (3)](https://github.com/joyunji/Java_study/assets/49296139/ab8480a7-79df-47fd-b7a7-7b07b62ba587)
+<img width="800" alt="키워드 분석" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/797e7286-e9d1-4bb0-8de6-b76aa3a04987">
+
 
 #### 📍Video
 ![GIF](https://user-images.githubusercontent.com/49296139/236685766-6c9e0593-fc8f-4369-a0f3-89a78ae4bd8e.gif)
@@ -34,12 +37,15 @@
 
 ## 4️⃣ 프로젝트 구성
 #### 📍프로젝트 구조
-![Structure)](https://github.com/joyunji/Java_study/assets/49296139/d4edef4b-1d69-43bc-8c18-4275ae44812d)
+<img width="800" alt="스크린샷 2023-09-07 오후 8 34 52" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/4f09247e-3917-4867-a46b-21176a0a3a2d">
+
 #### 📍Database ERD
-![ERD](https://github.com/joyunji/Java_study/assets/49296139/b0c2a116-fea5-4a75-a830-2368ddb7a2e9)
+<img width="800" alt="ERD" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/1721e745-c19e-46f2-967b-28d69e394fdf">
+
 
 #### 📍Flow Chart
-![Flowchart](https://github.com/joyunji/Java_study/assets/49296139/2db62d0d-44c7-4858-a7b5-530a0edd8ba4)
+<img width="800" alt="FlowChart" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/55f18eba-e68c-4b31-a144-ffede99184fc">
+
 
 ## 5️⃣ 참고사항
 #### 📍크롤링 데이터 출처
