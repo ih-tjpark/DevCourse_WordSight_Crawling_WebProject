@@ -12,7 +12,7 @@
 
 ## 2️⃣ 프로젝트 결과물 
 #### 📍메인 화면
-<img width="800" alt="메인" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/19382948-2ae8-4d30-a8e5-6c738554f7bb">
+<img width="800" alt="메인" src="https://github.com/ih-tjpark/DevCourse_WordSight_Crawling_WebProject/assets/57780594/0c083097-53f1-464d-9a43-67c41b8aab45">
 
 
 #### 📍뉴스 상세화면
